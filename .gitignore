@@ -1,0 +1,4 @@
+# Specify folders/files to excluded from git tracking in this file
+
+# always exclude nodemodules folder
+node_modules/
