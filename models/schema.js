@@ -1,20 +1,36 @@
 /**
  * Schema of models stays here.
  * schema is required to avoid confusions and to make objects uniform
- * eventually we'll be using these schemas to create our objects.
  */
 
+ // NOTE: we are not gonna export it or use it anywhere,
+ //       think of it as an index or lookup to see how our models are related.
 schemas = {
+    // User schema
     user: {
-        id: null,
-        firstName: null,
-        lastName: null,
-        userName: null,
-        email: null,
-        phoneNumber: null,
-        Address: null, // for now let it be as it is; later we'll change it to suit map needs.
-        ownedVehicals: null
+        firstName: requiredString,
+        lastName: requiredString,
+        userName: requiredString,
+        email: {
+            type: String,
+            required: [true, "can't be blank"],
+            match: [/\S+@\S+\.\S+/, 'is invalid'],
+            index: true
+        },
+        phoneNumber: Number,
+        Address: {
+            latitude: {
+                ...requiredNumber,
+                min: -90,
+                max: 90,
+            },
+            longitude: {
+                ...requiredNumber,
+                min: -180,
+                max: 180
+            }
+        },
+        ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
     }
+    
 }
-
-module.exports = schemas;

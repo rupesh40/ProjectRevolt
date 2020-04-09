@@ -14,16 +14,14 @@ const requiredNumber = {
 
 // TODO: need to add tracking fields. e.g. visited grid stations, etc.
 const userSchema = new Schema({
-    id: {
-        type: Number,
-        min: 1
-    },
     firstName: requiredString,
     lastName: requiredString,
     userName: requiredString,
     email: {
-        type: mongoose.SchemaType.email,
-        required: true
+        type: String,
+        required: [true, "can't be blank"],
+        match: [/\S+@\S+\.\S+/, 'is invalid'],
+        index: true
     },
     phoneNumber: Number,
     Address: {
@@ -39,9 +37,12 @@ const userSchema = new Schema({
         }
     },
     ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
-},{
-    timestamps: true
-}
-); 
+}, {
+        timestamps: true
+    }
+);
 
-module.exports = new User(); 
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User; 
