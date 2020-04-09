@@ -1,42 +1,47 @@
-/**
- * For now leave this class as it is
- * we'll modify it as we proceed
- */
-class User {
-    /** See Schema.js */
+const mongoose = require('mongoose');
 
-    /**
-     * creats a new user object
-     * @param {user.shcema} args
-     * @returns user onject
-     */
-    createUser(args){
-        this.id = args.id || undefined;
-        this.firstName = args.firstName || undefined;
-        this.lastName = args.lastName || undefined;
-        this.userName = args.userName || undefined;
-        this.email = args.email || undefined;
-        this.phoneNumber = args.phoneNumber || undefined;
-        this.Address = args.Address || undefined;
-        this.ownedVehicals = args.ownedVehicals || undefined;
-        return this;
-    }
+const { Schema } = mongoose;
 
-    // maps() {
-    //     console.log("function for maps");
-    // }
+const requiredString = {
+    type: String,
+    required: true
+};
 
-    // slotBooking() {
-    //     console.log("function for slot booking");
-    // }
+const requiredNumber = {
+    type: Number,
+    required: true
+};
 
-    // rangeAnxiety() {
-    //     console.log("function for range anxiety solution");
-    // }
-
-    // tripPlanner() {
-    //     console.log("function for trip planner");
-    // }
+// TODO: need to add tracking fields. e.g. visited grid stations, etc.
+const userSchema = new Schema({
+    id: {
+        type: Number,
+        min: 1
+    },
+    firstName: requiredString,
+    lastName: requiredString,
+    userName: requiredString,
+    email: {
+        type: mongoose.SchemaType.email,
+        required: true
+    },
+    phoneNumber: Number,
+    Address: {
+        latitude: {
+            ...requiredNumber,
+            min: -90,
+            max: 90,
+        },
+        longitude: {
+            ...requiredNumber,
+            min: -180,
+            max: 180
+        }
+    },
+    ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
+},{
+    timestamps: true
 }
+); 
 
 module.exports = new User(); 
