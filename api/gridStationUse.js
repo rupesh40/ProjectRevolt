@@ -43,7 +43,7 @@ router1.post('./api/GridStation',bodyParser, async (req,res ,next) =>{
 
 //task 3.3 / update the GridStationData to db
 
-router1.update('./api/GridStation',async (req,res) =>{
+router1.patch('./api/GridStation',async (req,res) =>{
     try{
        const updatedGrid = await GridStationModel.findByIdAndUpdate(req.params.id,req.body,{
            new:true,

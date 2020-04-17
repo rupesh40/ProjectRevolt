@@ -29,7 +29,7 @@ router.post('/', bodyParser, async (req, res, next) => {
 });
 
 //task 1.1 / updates the users data to db
-router.update('/',async (req,res,)=>{
+router.patch('/',async (req,res,)=>{
    try{
 
     const user1= await UserModel.findByIdAndUpdate(req.params.id, req.body,{
