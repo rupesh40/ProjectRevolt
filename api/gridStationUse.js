@@ -3,10 +3,10 @@ bodyParser = require('body-parser').json();
 
 const GridStationModel = require('./gridStationSchema');
 
-const router1 = Router();
+const router = Router();
 
 // task 3.1 send all  GridStations from db
-router1.get('./api/GridStation', async (req,res) =>{
+router.get('./api/GridStation', async (req,res) =>{
     try{
         const grid = await GridStationModel.find();
 
@@ -26,7 +26,7 @@ router1.get('./api/GridStation', async (req,res) =>{
 });
 
 // task 3.2 / add new gridStationData to db 
-router1.post('./api/GridStation',bodyParser, async (req,res ,next) =>{
+router.post('./api/GridStation',bodyParser, async (req,res ,next) =>{
     try{
         const newGrid = await GridStationModel.create(req.body);
         res.status(200).json({
@@ -43,7 +43,7 @@ router1.post('./api/GridStation',bodyParser, async (req,res ,next) =>{
 
 //task 3.3 / update the GridStationData to db
 
-router1.patch('./api/GridStation',async (req,res) =>{
+router1.patch('./api/GridStation/:id',async (req,res) =>{
     try{
        const updatedGrid = await GridStationModel.findByIdAndUpdate(req.params.id,req.body,{
            new:true,
@@ -65,7 +65,7 @@ router1.patch('./api/GridStation',async (req,res) =>{
 });
 
 //Task 3.3 / delete the GridStation from db
-router1.delete('./api/GridStation', async (req,res) =>{
+router.delete('./api/GridStation/delete/:id', async (req,res) =>{
     Try{
         await GridStationModel.findByIdAndDelete(req.params.id);
         res.status.(200).json({
@@ -82,7 +82,7 @@ router1.delete('./api/GridStation', async (req,res) =>{
 });
 
 //Task 3.4 find the GridStation By Id
-router1.get('./api/GridStation',async(req,res)=>{
+router.get('./api/GridStation/find/:id',async(req,res)=>{
     try{
         const Grid = await GridStationModel.findById(req.params.id);
         res.status(200).json({

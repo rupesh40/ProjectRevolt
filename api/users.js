@@ -29,7 +29,7 @@ router.post('/', bodyParser, async (req, res, next) => {
 });
 
 //task 1.1 / updates the users data to db
-router.patch('/',async (req,res,)=>{
+router.patch('/update-user/:id',async (req,res,)=>{
    try{
 
     const user1= await UserModel.findByIdAndUpdate(req.params.id, req.body,{
@@ -53,7 +53,7 @@ router.patch('/',async (req,res,)=>{
     });
 // task 1.2 / delete the user from db
 
-router.delete('/', async (res,req, next) =>{
+router.delete('/delete-user/:id', async (res,req, next) =>{
     try{
         await UserModel.findByIdAndDelete(req.params.id);
         res.status(200).json({
@@ -70,7 +70,7 @@ router.delete('/', async (res,req, next) =>{
 });
 
 //task 1.3 / find by id
-router.get('/', async (req, res) => {
+router.get('/find-user/:id', async (req, res) => {
     try{
     const users = await UserModel.findById(rq.params.id);
     res.status(200).json({

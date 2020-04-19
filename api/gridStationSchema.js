@@ -14,10 +14,8 @@ const requiredNumber = {
     required: true
 };
 
-const userSchema = new Schema({
-    firstName: requiredString,
-    lastName: requiredString,
-    userName: requiredString,
+const gridStationSchema = new Schema({
+    Name = requiredString,
     email: {
         type: String,
         required: [true, "can't be blank"],
@@ -37,8 +35,8 @@ const userSchema = new Schema({
             max: 180
         }
     },
-    StationNumber: requiredNumber,
-    No_of_chargingPoint= requiredNumber,
+    stationNumber: requiredNumber,
+    NoOfChargingPoint= requiredNumber,
     
      {
         timestamps: true
@@ -46,6 +44,6 @@ const userSchema = new Schema({
 });
 
 
-const GridStation = mongoose.model('GridStation', userSchema);
+const GridStation = mongoose.model('GridStation', gridStationSchema);
 
 module.exports = GridStation; 
