@@ -25,7 +25,7 @@ const userSchema = new Schema({
         index: true
     },
     phoneNumber: Number,
-    Address: {
+    StationAddress: {
         latitude: {
             ...requiredNumber,
             min: -90,
@@ -38,7 +38,8 @@ const userSchema = new Schema({
         }
     },
     StationNumber: requiredNumber,
-    Chargingports
+    No_of_chargingPoint= requiredNumber,
+    
      {
         timestamps: true
     }
