@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-mongoose.connect("mongodb://localhost:27017/testdb",
-  { useNewUrlParser: "True" }
+mongoose.connect("mongodb://localhost:27017/admin",
+  {  useCreateIndex: true, useNewUrlParser: "true" ,useUnifiedTopology: true}
 ).catch(error => handleError(error));
 
 mongoose.connection.on("error", err => {

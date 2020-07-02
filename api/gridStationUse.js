@@ -18,7 +18,7 @@ router.get('./api/GridStation', async (req,res) =>{
         });
     }catch(err){
         res.status(404).json({
-            status:"fail"
+            status:"fail",
             message:err 
         });
     }
@@ -43,7 +43,7 @@ router.post('./api/GridStation',bodyParser, async (req,res ,next) =>{
 
 //task 3.3 / update the GridStationData to db
 
-router1.patch('./api/GridStation/:id',async (req,res) =>{
+router.patch('./api/GridStation/:id',async (req,res) =>{
     try{
        const updatedGrid = await GridStationModel.findByIdAndUpdate(req.params.id,req.body,{
            new:true,
@@ -98,3 +98,5 @@ router.get('./api/GridStation/find/:id',async(req,res)=>{
         });
     }
 });
+
+module.exports = router;

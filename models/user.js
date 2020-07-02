@@ -9,7 +9,7 @@ const requiredString = {
 
 const requiredNumber = {
     type: Number,
-    required: true
+    
 };
 
 // TODO: need to add tracking fields. e.g. visited grid stations, etc.
