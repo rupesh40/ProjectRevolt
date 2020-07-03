@@ -1,6 +1,6 @@
 import React from "react";
 import loginImg from "./log.png";
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 export  class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +31,7 @@ export  class Login extends React.Component {
         </div>
         <div className="footer">
           <button type="button" onClick={this.change} className="btn1" >
-             Login
+           <Link to="/h" style={{color:'white'}}>  Login</Link>
           </button>
         </div>
       </div>

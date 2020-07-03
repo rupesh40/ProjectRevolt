@@ -25,6 +25,7 @@ class App extends React.Component {
     <Route path="/Home" exact component={Home}/>
     <Route path="/Temp" exact component={Temp}/>
     <Route path="/" exact component={Main}/>
+    <Route path="/h" exact component={Home}/>
     </BrowserRouter>
  </div>
   );
