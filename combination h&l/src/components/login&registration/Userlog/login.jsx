@@ -1,19 +1,24 @@
 import React from "react";
-import loginImg from "./log.png";
-
-export class Register extends React.Component {
+import loginImg from "../Styling/log.png";
+import {Link} from 'react-router-dom';
+import "../Styling/style.scss";
+import "../Styling/App.scss";
+export  class Login extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  change=()=>{
+    this.props.check();
+}
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-      <br/><br/><br/><br/><br/>
-        <div className="header">Register</div>
+     
+        <div className="header">User Login</div>
         <div className="content">
+        
           <div className="image">
-            <img src={loginImg}/>
+            <img src={loginImg} />
           </div>
           <div className="form">
             <div className="form-group">
@@ -21,20 +26,17 @@ export class Register extends React.Component {
               <input type="text" name="username" placeholder="username" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" />
-            </div>
-            <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" />
+              <input type="password" name="password" placeholder="password" />
             </div>
           </div>
-        </div>
+       
         <div className="footer">
-          <button type="button" className="btn1">
-            Register
+          <button type="button" onClick={this.change} className="btn1" >
+          <Link to="/h" style={{color:'white'}}> Login</Link>
           </button>
         </div>
+      </div>
       </div>
     );
   }

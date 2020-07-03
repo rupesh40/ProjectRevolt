@@ -22,7 +22,7 @@
     }
 
     .form {
-      margin-top: 2em;
+      margin-top: 1em;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -33,19 +33,19 @@
         align-items: flex-start;
         width: fit-content;
         label {
-          font-size: 20px;
+          font-size: 12px;
         }
         input {
-          margin-top: 6px;
-          min-width: 18em;
-          height: 37px;
-          padding: 0px 10px;
-          font-size: 16px;
+          margin-top: 3px;
+          min-width: 14em;
+          height: 25px;
+          padding: 0px 5px;
+          font-size: 15px;
           font-family: "Open Sans", sans-serif;
           background-color: #f3f3f3;
           border: 0;
           border-radius: 4px;
-          margin-bottom: 31px;
+          margin-bottom: 20px;
           transition: all 250ms ease-in-out;
           &:hover {
             //background-color: #ffffff;
@@ -61,7 +61,7 @@
     }
   }
 
-  .footer {
-    margin-top: 3em;
-  }
+  // .footer {
+  //   margin-top: 1em;
+  // }
 }

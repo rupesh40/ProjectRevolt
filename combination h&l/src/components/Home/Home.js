@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Portfolio from './components/login/Portfolio'
-import './Home.css'
+import Portfolio from './Portfolio'
+import './Styling/Home.css'
+//import {Link} from 'react-router-dom'
 export default class Home extends Component {
     render() {
         const portfolioLinks = [
@@ -49,7 +50,7 @@ export default class Home extends Component {
                                     <a className="nav-link js-scroll-trigger" href="#team">Contact</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#services">Log Out</a>
+                                <a className="nav-link js-scroll-trigger" href="#team">Log Out</a>
                                 </li>
 
                             </ul>

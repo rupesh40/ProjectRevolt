@@ -1,0 +1,32 @@
+.Interface{
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    font-size: 70px;
+    color:rgba(19, 12, 14, 0.774);
+    font-family: "poppins",sans-serif;
+    font-weight: 500;
+        
+
+}
+.blur{
+ backdrop-filter: blur(5px);
+}
+.button {
+    font-size: 30px;
+    padding: 10px 30px;
+    border: 0;
+    margin: 20px;
+    background-color: rgb(13, 163, 163);
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 2px 2px;
+    &:hover {
+      background-color: #2386c8;
+    }
+    &:focus {
+      outline: none;
+    }
+  }

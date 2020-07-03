@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.scss";
-import './nav.css';
-import "./style.scss";
-import { Login } from "./login";
-import { Register } from "./register";
+import "./Styling/App.scss";
+import './Styling/nav.css';
+import "./Styling/style.scss";
+import { LoginG } from "./GridLog/loginG.jsx";
+import { RegisterG } from "./GridLog/registerG.jsx";
 import {BrowserRouter,Route} from 'react-router-dom'
-import Nav1 from '../../nav.jsx'
-class App1 extends React.Component {
+import Navigation from './Navigation.jsx'
+class GridLoginRegister extends React.Component {
   
   constructor(props) {
     super(props);
@@ -49,17 +49,17 @@ class App1 extends React.Component {
     const currentActive = isLogginActive ? "login" : "register";
     return (
       <div className="App">
-      <Nav1/>
+      <Navigation/>
         <div className="login">
         
-          <br/><br/><br/>
+         
           
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <Login containerRef={ref => (this.current = ref)} check={this.check}   />
+              <LoginG containerRef={ref => (this.current = ref)} check={this.check}   />
             ) }
             {!isLogginActive && (
-              <Register containerRef={ref => (this.current = ref)} />
+              <RegisterG containerRef={ref => (this.current = ref)} />
             )}
           </div>
           <RightSide
@@ -90,4 +90,4 @@ const RightSide = props => {
   
 };
 
-export default App1;
+export default GridLoginRegister;

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import App1 from './components/login/App1.jsx'
+import LoginRegisterUser from './components/login&registration/LoginRegisterUser.jsx'
+import GridLoginRegister from './components/login&registration/GridLoginRegister.jsx'
 import {BrowserRouter,Route,Switch}from 'react-router-dom'
-import Nav1 from './nav.jsx'
-import Main from './main.jsx'
-import Home from './Home1.js'
-import Temp from './temp.js'
+import Navigation from './components/login&registration/Navigation.jsx'
+import Main from './components/login&registration/main.jsx'
+import Home from './components/Home/Home.js'
+//import Temp from './temp.js'
+import Interface from './components/login&registration/Interface.jsx'
 class App extends React.Component {
   state={
     called:false
@@ -20,12 +22,13 @@ class App extends React.Component {
     <div >
       
 <BrowserRouter>
-    <Route path="/" exact component={Nav1}/>
-    <Route path="/login" exact component={App1}  call={this.call} />
+    <Route path="/loginU" exact component={LoginRegisterUser}/>
+    <Route path="/loginG" exact component={GridLoginRegister}/>
+    <Route path="/" exact component={Navigation}/>
     <Route path="/Home" exact component={Home}/>
-    <Route path="/Temp" exact component={Temp}/>
-    <Route path="/" exact component={Main}/>
+    <Route path="/Interface" exact component={Interface}/>
     <Route path="/h" exact component={Home}/>
+    <Route path="/" exact component={Main}/>
     </BrowserRouter>
  </div>
   );

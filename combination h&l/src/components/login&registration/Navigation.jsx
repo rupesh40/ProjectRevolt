@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-export default class Nav1 extends React.Component{
+export default class Navigation extends React.Component{
 
 render(){
 return(
@@ -19,18 +19,19 @@ return(
           <Link to="/" style={{color:'white'}} className="nav-link js-scroll-trigger">Home</Link>  
 
           </li>
+          <li className="nav-item">
+          <Link to="/contact" style={{color:'white'}} className="nav-link js-scroll-trigger">Contact</Link>
+          </li>
+          <li className="nav-item">
+          <Link to="/about" style={{color:'white'}} className="nav-link js-scroll-trigger">About</Link>
+          </li>
+          <li className="nav-item">
+          <Link to="/services" style={{color:'white'}}  className="nav-link js-scroll-trigger">Services</Link>
+          </li>
           <li className="nav-item" >
-          <Link to="/login" style={{color:'white'}} className="nav-link js-scroll-trigger">login</Link>  
+          <Link to="/Interface" style={{color:'white'}} className="nav-link js-scroll-trigger">login/Register</Link>  
           </li>
-          <li className="nav-item">
-          <Link to="/Home" style={{color:'white'}} className="nav-link js-scroll-trigger">About</Link>
-          </li>
-          <li className="nav-item">
-          <Link to="/Temp" style={{color:'white'}}  className="nav-link js-scroll-trigger">Services</Link>
-          </li>
-          <li className="nav-item">
-          <Link to="/login" style={{color:'white'}} className="nav-link js-scroll-trigger">Contact</Link>
-          </li>
+          
         </ul>
       </div>
     </div>
