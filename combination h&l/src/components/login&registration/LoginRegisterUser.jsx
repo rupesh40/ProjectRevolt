@@ -5,7 +5,7 @@ import "./Styling/style.scss";
 import { Login } from "./Userlog/login.jsx";
 import { Register } from "./Userlog/register.jsx";
 import {BrowserRouter,Route} from 'react-router-dom'
-import Navigation from './Navigation.jsx'
+import Navigation from '../Navigation.jsx'
 class LoginRegisterUser extends React.Component {
   
   constructor(props) {

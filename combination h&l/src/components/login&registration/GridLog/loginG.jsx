@@ -33,7 +33,7 @@ export  class LoginG extends React.Component {
        
         <div className="footer">
           <button type="button" onClick={this.change} className="btn1" >
-          <Link to="/h" style={{color:'white'}}> Login</Link>
+          <Link to="/Home" style={{color:'white'}}> Login</Link>
           </button>
         </div>
       </div>

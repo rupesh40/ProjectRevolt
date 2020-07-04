@@ -5,7 +5,7 @@ import "./Styling/style.scss";
 import { LoginG } from "./GridLog/loginG.jsx";
 import { RegisterG } from "./GridLog/registerG.jsx";
 import {BrowserRouter,Route} from 'react-router-dom'
-import Navigation from './Navigation.jsx'
+import Navigation from '../Navigation.jsx'
 class GridLoginRegister extends React.Component {
   
   constructor(props) {

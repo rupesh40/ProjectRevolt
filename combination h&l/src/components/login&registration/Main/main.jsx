@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 //import img from './bg.jpg'
-import './Styling/nav.css';
-import './Styling/Home.css'
-import Navigation from './Navigation.jsx'
+import '../Styling/nav.css';
+import '../Styling/Home.css'
+import Navigation from '../../Navigation.jsx'
 
 export default class Main extends React.Component{
 render(){

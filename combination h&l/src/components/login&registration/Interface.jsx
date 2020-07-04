@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import Navigation from './Navigation.jsx'
+import Navigation from '../Navigation.jsx'
 import "./Styling/style.scss";
 import "./Styling/Inter.css";
 export default class Interface extends React.Component{
