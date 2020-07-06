@@ -1,22 +1,29 @@
+
+const dotenv = require("dotenv");
+dotenv.config({path :"./config.env"});
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan'); // logs every request on the console
 const helmet = require('helmet'); // protects http request headers
 const middleWares = require('./middlewares'); // our custom middlewares
-
 const users = require('./api/users');
 
 const app = express();
 
-app.use(morgan('common'));
+if(process.env.NODE_ENV==="development"){
+app.use(morgan('dev'));
+}
+
 app.use(helmet());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-mongoose.connect("mongodb://localhost:27017/testdb",
-  { useNewUrlParser: "True" }
+const DB= process.env.DATABASE
+
+mongoose.connect(DB,
+  { useNewUrlParser: "True",useCreateIndex:"True" ,useUnifiedTopology: "True"}
 ).catch(error => handleError(error));
 
 mongoose.connection.on("error", err => {
@@ -27,14 +34,8 @@ mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected");
 });
 
-
-
-app.get('/', (request, response) => {
-  response.send('Hello  ');
-});
-
 app.use('/api/users', users);
-
+  
 app.use(middleWares.notFound);
 app.use(middleWares.erroHandler);
 
@@ -46,5 +47,3 @@ app.listen(port, (err) => {
 
   console.log(`server is listening on ${port}`);
 });
-
-

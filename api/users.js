@@ -1,9 +1,17 @@
 const { Router } = require('express');
 bodyParser = require('body-parser').json();
 
-const UserModel = require('../models/user');
+const UserModel = require('../models/userModel.js');
+
+const {signup,login} =require("./../services/authService.js");
 
 const router = Router();
+
+//signup the user
+router.post('/signup',bodyParser,signup);
+
+//sign's in the user
+router.post('/login',bodyParser,login);
 
 // sends all users from db
 router.get('/', async (req, res) => {
@@ -29,7 +37,7 @@ router.post('/', bodyParser, async (req, res, next) => {
 });
 
 //task 1.1 / updates the users data to db
-router.patch('/update-user/:id',async (req,res,)=>{
+router.patch('/update-user/:id',bodyParser,async (req,res,)=>{
    try{
 
     const user1= await UserModel.findByIdAndUpdate(req.params.id, req.body,{
