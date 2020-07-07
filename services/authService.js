@@ -2,6 +2,13 @@
 const User = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
 
+
+const signToken = id => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+
+}
 exports.signup = async (req, res, next) => {
   try {
     const newUser = await User.create({
@@ -11,10 +18,7 @@ exports.signup = async (req, res, next) => {
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,
     });
-
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+   const token = signToken(newUser._id)
 
     res.status(200).json({
       status: "success",
@@ -35,17 +39,21 @@ exports.login = async(req,res,next)=>{
 
     //1) checking if email and password exist
   if (!email || !password){
-      return next(err)
+      return next()
   }
 
   //2) check if user exist and password is correct
-
+    const user = await User.findOne({email}) 
+   
+    if (!user || ! await user.correctPassword(password,user.password)) return next() 
 
   //3)check if everything is okay then send tokecn to client
-  const token = " ";
+  const token = signToken(user._id);
 
   res.status(200).json({
       status:"success",
       token
+      
   });
- }
+
+}

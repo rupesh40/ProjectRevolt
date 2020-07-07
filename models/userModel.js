@@ -26,10 +26,11 @@ const userSchema = new Schema({
         type: String,
         required: [true, "can't be blank"],
         match: [/\S+@\S+\.\S+/, 'is invalid'],
-        index: true,
         unique:true
+        
+       
     },
-    phoneNumber: Number,
+    phoneNumber: requiredNumber,
     /*Address: {
         latitude: {
             ...requiredNumber,
@@ -56,6 +57,11 @@ if(!this.isModified("password")) return next();
 this.password = await bcrypt.hash(this.password,12);
   next();
 })
+
+
+userSchema.methods.correctPassword = async (candidatePassword,userPassword)=>{
+    return bcrypt.compare(candidatePassword,userPassword)
+}
 
 const User = mongoose.model('User', userSchema);
 

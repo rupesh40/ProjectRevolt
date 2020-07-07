@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 const DB= process.env.DATABASE
 
 mongoose.connect(DB,
-  { useNewUrlParser: "True",useCreateIndex:"True" ,useUnifiedTopology: "True"}
+  { useNewUrlParser: "True",useUnifiedTopology: "True"}
 ).catch(error => handleError(error));
 
 mongoose.connection.on("error", err => {
