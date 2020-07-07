@@ -8,6 +8,7 @@ const morgan = require('morgan'); // logs every request on the console
 const helmet = require('helmet'); // protects http request headers
 const middleWares = require('./middlewares'); // our custom middlewares
 const users = require('./api/users');
+const gridStationUse = require("./api/gridStationUse");
 
 const app = express();
 
@@ -39,11 +40,13 @@ app.use((req,res,next)=>{
 })
 
 app.use('/api/users', users);
+
+app.use('/api/gridStation',gridStationUse);
   
 app.use(middleWares.notFound);
 app.use(middleWares.erroHandler);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000 ;
 app.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
