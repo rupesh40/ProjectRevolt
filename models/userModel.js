@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 const { Schema } = mongoose;
-
+const jwt = require("jsonwebtoken");
 const requiredString = {
     type: String,
     required: true
@@ -43,6 +43,7 @@ const userSchema = new Schema({
             max: 180
         }
     },*/
+    passwordChangedAt : Date,
     ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
 }, {
         timestamps: true
@@ -63,6 +64,15 @@ userSchema.methods.correctPassword = async (candidatePassword,userPassword)=>{
     return bcrypt.compare(candidatePassword,userPassword)
 }
 
+userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+    if(this.passwordChangedAt){
+        const changedTimeStamp = parseInt(this.passwordChangedAt.getTime()/1000,10)
+        console.log(changedTimeStamp,JWTTimestamp)
+    return JWTTimestamp < changedTimeStamp;
+    }
+ //false means no changed
+    return false
+}
 const User = mongoose.model('User', userSchema);
 
 module.exports = User; 

@@ -3,7 +3,7 @@ bodyParser = require('body-parser').json();
 
 const UserModel = require('../models/userModel.js');
 
-const {signup,login} =require("./../services/authService.js");
+const {signup,login,protect} =require("./../services/authService.js");
 
 const router = Router();
 
@@ -14,7 +14,7 @@ router.post('/signup',bodyParser,signup);
 router.post('/login',bodyParser,login);
 
 // sends all users from db
-router.get('/', async (req, res) => {
+router.get('/',protect, async (req, res) => {
     try{
     const users = await UserModel.find();
     res.json(users);
@@ -61,7 +61,7 @@ router.patch('/update-user/:id',bodyParser,async (req,res,)=>{
     });
 // task 1.2 / delete the user from db
 
-router.delete('/delete-user/:id', async (res,req, next) =>{
+router.delete('/delete-user/:id', async (req,res, next) =>{
     try{
         await UserModel.findByIdAndDelete(req.params.id);
         res.status(200).json({
@@ -78,7 +78,7 @@ router.delete('/delete-user/:id', async (res,req, next) =>{
 });
 
 //task 1.3 / find by id
-router.get('/find-user/:id', async (req, res) => {
+router.get('/find-user/:id', async (req, res,next) => {
     try{
     const users = await UserModel.findById(rq.params.id);
     res.status(200).json({
