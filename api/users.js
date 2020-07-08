@@ -3,7 +3,7 @@ bodyParser = require('body-parser').json();
 
 const UserModel = require('../models/userModel.js');
 
-const {signup,login,protect,forgetPassword} =require("./../services/authService.js");
+const {signup,login,protect,forgetPassword, resetPassword, updatePassword} =require("./../services/authService.js");
 
 const router = Router();
 
@@ -15,6 +15,12 @@ router.post('/login',bodyParser,login);
 
 //forget password
 router.post("/forget-Password",bodyParser,forgetPassword);
+
+//reset password
+router.patch('/reset-Password/:token',bodyParser,resetPassword);
+
+//update the password 
+router.patch("/updateMyPassword",bodyParser,protect,updatePassword)
 
 
 // sends all users from db
@@ -33,6 +39,7 @@ router.post('/', bodyParser, async (req, res, next) => {
         const user = new UserModel(req.body);
         const createdUser = await user.save();
         res.json(createdUser);
+        
     }catch(error){
         if(error.name === 'ValidationError')
             res.status(422);

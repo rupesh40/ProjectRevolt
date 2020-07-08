@@ -69,6 +69,12 @@ this.password = await bcrypt.hash(this.password,12);
   next();
 })
 
+userSchema.pre("save", function(next){
+    if(!this.isModified('password') || this.isNew) return next()
+
+    this.passwordChangedAt= Date.now() - 1000
+})
+
 
 userSchema.methods.correctPassword = async (candidatePassword,userPassword)=>{
     return bcrypt.compare(candidatePassword,userPassword)
