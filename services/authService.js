@@ -3,6 +3,7 @@
 const { promisify } = require("util");
 const User = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("./../utilities/email");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
