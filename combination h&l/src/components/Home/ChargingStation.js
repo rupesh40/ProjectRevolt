@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-
+import FixedNavigation from './FixedNavigation'
 export class ChargingStation extends Component {
     render() {
         return (
             <div>
+            <FixedNavigation/>
                 <section className="page-section" id="services">
                     <div className="container">
                         <div className="row">

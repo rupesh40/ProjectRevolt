@@ -1,9 +1,11 @@
 body{
     font-family: "poppins";
-    background-image: url(./bg.jpg);
+    /* background-image: url(./bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     overflow: scroll;
+    backdrop-filter: blur(5px);
+    background-color: rgba(228, 228, 15, 0.438);
     }
 .navb{
     background-color:transparent;

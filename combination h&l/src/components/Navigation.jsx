@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-export default class Navigation extends React.Component{
-
-render(){
+import Button from 'react-bootstrap/Button'
+import Interface from './login&registration/Interface.jsx'
+function Navigation() {
+  const [modalShow, setModalShow] = React.useState(false);
 return(
 
 <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div className="container">
+    
       <a className="navbar-brand js-scroll-trigger" href="#page-top">REVOLT</a>
       <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -16,26 +18,34 @@ return(
       <div className="collapse navbar-collapse" id="navbarResponsive">
         <ul className="navbar-nav text-uppercase ml-auto">
           <li className="nav-item">
-          <Link to="/" style={{color:'white'}} className="nav-link js-scroll-trigger">Home</Link>  
+          <a href="#MainPage" style={{color:'white'}} className="nav-link js-scroll-trigger">Home</a> 
 
           </li>
           <li className="nav-item">
-          <Link to="/contact" style={{color:'white'}} className="nav-link js-scroll-trigger">Contact</Link>
+          <a href="#ContactUs" style={{color:'white'}} className="nav-link js-scroll-trigger">Contact</a>
           </li>
           <li className="nav-item">
-          <Link to="/about" style={{color:'white'}} className="nav-link js-scroll-trigger">About</Link>
+          <a href="#About" style={{color:'white'}} className="nav-link js-scroll-trigger">About</a>
           </li>
           <li className="nav-item">
-          <Link to="/services" style={{color:'white'}}  className="nav-link js-scroll-trigger">Services</Link>
+          <a href="#Portfolio" style={{color:'white'}} className="nav-link js-scroll-trigger">Networks</a>
+          </li>
+          <li className="nav-item">
+          <a href="#Services" style={{color:'white'}}  className="nav-link js-scroll-trigger">Services</a>
           </li>
           <li className="nav-item" >
-          <Link to="/Interface" style={{color:'white'}} className="nav-link js-scroll-trigger">login/Register</Link>  
+          <Button variant="primary mr-2"  onClick={() => setModalShow(true)}>
+          Login/Register
+        </Button>
           </li>
           
         </ul>
       </div>
     </div>
+    <Interface
+ show={modalShow}
+ onHide={() => setModalShow(false)}/>
   </nav>
 );
 }
-}
+export default Navigation;

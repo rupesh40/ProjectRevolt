@@ -2,7 +2,7 @@ import React from 'react'
 
 export default ({ portfolioLinks }) => {
     return (
-        <section className="bg-light page-section" id="portfolio">
+        <section className="bg-light page-section" id="Portfolio">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">

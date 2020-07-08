@@ -6,13 +6,14 @@
   justify-content: center;
   align-items: center;
   font-family: "Open Sans", sans-serif;
- background-image: url("./bg.jpg");
- //backdrop-filter: blur(5px);
+ //background-image: url("./bg.jpg");
+ backdrop-filter: blur(20px);
   background-size: cover;
   //background-repeat: no-repeat;
-  background-color: #282c34;
-  padding-top: 10px;
-  margin-top: 50px;
+  //background-color: #282c34;
+ // padding-top: 10px;
+  //margin-top: 50px;
+  background-color: rgba(228, 228, 15, 0.438);
   
 }
 

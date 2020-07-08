@@ -5,14 +5,13 @@ import "./Styling/style.scss";
 import { Login } from "./Userlog/login.jsx";
 import { Register } from "./Userlog/register.jsx";
 import {BrowserRouter,Route} from 'react-router-dom'
-import Navigation from '../Navigation.jsx'
+import LoginNavigation from './LoginNavigation.jsx'
 class LoginRegisterUser extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
       isLogginActive: true,
-      a:false
     };
   }
 
@@ -36,9 +35,6 @@ class LoginRegisterUser extends React.Component {
   check=()=>{
     this.setState({a:true})
   }
-  //   back=()=>{
-  //    this.State.a && this.props.call
-  //  }
  
 
   render() {
@@ -49,7 +45,7 @@ class LoginRegisterUser extends React.Component {
     const currentActive = isLogginActive ? "login" : "register";
     return (
       <div className="App">
-      <Navigation/>
+      <LoginNavigation/>
         <div className="login">
         
          

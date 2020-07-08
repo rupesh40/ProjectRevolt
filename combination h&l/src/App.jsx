@@ -6,7 +6,6 @@ import {BrowserRouter,Route,Switch}from 'react-router-dom'
 import Navigation from './components/Navigation.jsx'
 import Main from './components/login&registration/Main/main.jsx'
 import Home from './components/Home/Home.js'
-//import Temp from './temp.js'
 import Interface from './components/login&registration/Interface.jsx'
 import HomeNavigation from './components/Home/HomeNavigation.jsx';
 import About from './components/Home/About.js';
@@ -14,6 +13,7 @@ import ChargingStation from './components/Home/ChargingStation.js';
 import Network from './components/Home/Network.js';
 import Services from './components/Home/Services.jsx';
 import Trip from './components/Home/Trip.jsx';
+import Log from './components/login&registration/Log.jsx'
 class App extends React.Component {
   state={
     called:false
@@ -30,8 +30,7 @@ class App extends React.Component {
 <BrowserRouter>
     <Route path="/loginU" exact component={LoginRegisterUser}/>
     <Route path="/loginG" exact component={GridLoginRegister}/>
-    <Route path="/" exact component={Navigation}/>
-    <Route path="/Interface" exact component={Interface}/>
+  
     <Route path="/HomeNavigation" exact component={HomeNavigation}/>
     <Route path="/" exact component={Main}/>
     <Route path="/About" exact component={About}/>
@@ -49,3 +48,4 @@ class App extends React.Component {
 }
 export default App;
 // <Route path="/Home" exact component={Home}/>
+//  <Route path="/Interface" exact component={Interface}/>
