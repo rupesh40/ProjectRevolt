@@ -72,19 +72,46 @@ exports.protect = async (req, res, next) => {
   if (!token) return next();
 
   //2) verification of token
-     const decoded = await promisify(jwt.verify)(token,process.env.JWT_SECRET);
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   //3)check if users still exist
-   const freshUser = await User.findById(decoded.id);
+  const freshUser = await User.findById(decoded.id);
 
-   if (!freshUser) return next();
+  if (!freshUser) return next();
 
   //4)check if  user changed password after token is issued
-    
-  if(freshUser.changedPasswordAfter(decoded.iat)) return next();
 
-  req.user=freshUser;
+  if (freshUser.changedPasswordAfter(decoded.iat)) return next();
+
+  req.user = freshUser;
 
   //Grant access to protected route
   next();
+};
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("you do not have permission to perfrom this action"),
+        403
+      );
+    }
+    next();
+  };
+};
+
+exports.forgetPassword = async (req, res, next) => {
+  //1) Get user based on Posted email
+
+  const user = await User.findOne({ email: req.body.email });
+ 
+  if (!user) {
+    return next(/*new AppError("there is no user with email adress", 404)*/);
+  }
+   
+  //2)Genrate the random reset token
+  const resetToken = user.createPasswordResetToken();
+  await user.save({validateBeforeSave:false});
+  //3) sed it to uers email
 };

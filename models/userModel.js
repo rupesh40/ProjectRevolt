@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
@@ -14,6 +15,11 @@ const requiredNumber = {
 
 // TODO: need to add tracking fields. e.g. visited grid stations, etc.
 const userSchema = new Schema({
+    role: {
+        type: String,
+        enum : ['user','admin'],
+        default: 'user'
+    },
     firstName: requiredString,
     lastName: requiredString,
     //userName: requiredString,
@@ -43,7 +49,11 @@ const userSchema = new Schema({
             max: 180
         }
     },*/
-    passwordChangedAt : Date,
+    
+    passwordChangedAt : {type:Date},
+    passwordResetToken : {type:String},
+    passwordResetExpires :{type : Date},
+    
     ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
 }, {
         timestamps: true
@@ -73,6 +83,19 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
  //false means no changed
     return false
 }
+
+userSchema.methods.createPasswordResetToken= function(){
+    const resetToken = crypto.randomBytes(32).toString("hex");
+
+    this.passwordResetToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+    
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+    return resetToken
+ 
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User; 

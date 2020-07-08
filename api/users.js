@@ -3,7 +3,7 @@ bodyParser = require('body-parser').json();
 
 const UserModel = require('../models/userModel.js');
 
-const {signup,login,protect} =require("./../services/authService.js");
+const {signup,login,protect,forgetPassword} =require("./../services/authService.js");
 
 const router = Router();
 
@@ -12,6 +12,10 @@ router.post('/signup',bodyParser,signup);
 
 //sign's in the user
 router.post('/login',bodyParser,login);
+
+//forget password
+router.post("/forget-Password",bodyParser,forgetPassword);
+
 
 // sends all users from db
 router.get('/',protect, async (req, res) => {
