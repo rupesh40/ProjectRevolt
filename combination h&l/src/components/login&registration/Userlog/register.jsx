@@ -20,27 +20,27 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="username" className="form-control form-control-sm validate"  />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" />
+              <input type="text" name="email" placeholder="email" className="form-control form-control-sm validate"  />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" />
+              <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate"  />
             </div>
             <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="text" name="password" placeholder="password" />
+            <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
           </div>
           <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="text" name="password" placeholder="password" />
+          <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate"  />
         </div>
         <div className="form-group">
         <label htmlFor="password">Password</label>
-        <input type="text" name="password" placeholder="password" />
+        <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
       </div>
             
           </div>

@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button'
 function Interface(props) {
     return (
       
-      <Modal  Style={{backdropFilter:'blur(10px)'}}
+      <Modal  Style={{backdropFilter:'blur(10px)',maxHeight:'100%'}}
         className="bg-transparent d-inline-flex  will "
         
         {...props}

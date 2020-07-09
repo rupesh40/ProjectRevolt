@@ -42,5 +42,5 @@ body{
     display:inline-flex;
     background-repeat:no-repeat ;
     position: absolute;
-    margin-top: 150px;
+    max-height: 100%;
 } 

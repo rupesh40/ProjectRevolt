@@ -23,11 +23,11 @@ export  class LoginG extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="username" className="form-control form-control-sm validate" />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="password" />
+              <input type="password" name="password" placeholder="password" className="form-control form-control-sm validate" />
             </div>
           </div>
        
@@ -35,6 +35,10 @@ export  class LoginG extends React.Component {
           <button type="button" onClick={this.change} className="btn1" >
           <Link to="/HomeNavigation" style={{color:'white'}}> Login</Link>
           </button>
+          <br/><br/>
+          <p >
+                    Forgot <a href="#">password?</a>
+                </p>
         </div>
       </div>
       </div>
