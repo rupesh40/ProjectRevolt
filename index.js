@@ -12,6 +12,7 @@ const AppError = require("./utilities/appError");
 const globalErrorHandler = require("./utilities/errorController");
 const mongoSanitize = require("express-mongo-sanitize");
 const XSS = require("xss-clean");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use(
     extended: true,
   })
 );
+
+app.use(cookieParser()); //parses (data) cookie from incomming request 
 
 app.use(mongoSanitize()); //data sanitization against NoSQL querry injection
 

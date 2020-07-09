@@ -8,6 +8,7 @@ const { hash } = require("bcryptjs");
 const crypto = require("crypto");
 const { create } = require("domain");
 const AppError = require("./../utilities/appError");
+const catchAsync = require("./../utilities/catchAsync");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -77,7 +78,7 @@ exports.login = async (req, res, next) => {
   createSendToken(user, 201, res);
 };
 
-exports.protect = async (req, res, next) => {
+exports.protect = catchAsync(async (req, res, next) => {
   //1)getting token and check of its there
 
   let token;
@@ -88,9 +89,11 @@ exports.protect = async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(" ")[1];
   }
-  console.log(token);
+  else if(req.cookies.jwt){
+    token = req.cookies.jwt
+  }
 
-  if (!token) return next();
+  if (!token) return next(new AppError("you are not logged in ! please logged in to get access  "),401);
 
   //2) verification of token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -98,17 +101,17 @@ exports.protect = async (req, res, next) => {
   //3)check if users still exist
   const freshUser = await User.findById(decoded.id);
 
-  if (!freshUser) return next();
+  if (!freshUser) return next(new AppError("user belonging to this token does not exist",401));
 
   //4)check if  user changed password after token is issued
 
-  if (freshUser.changedPasswordAfter(decoded.iat)) return next();
+  if (freshUser.changedPasswordAfter(decoded.iat)) return next(new AppError("user recently changed password please logg in again",401));
 
   req.user = freshUser;
   console.log("protect is working ");
   //Grant access to protected route
   next();
-};
+});
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
