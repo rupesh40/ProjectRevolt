@@ -51,6 +51,7 @@ exports.signup = async (req, res, next) => {
       email: req.body.email,
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,
+      
     });
 
     createSendToken(newUser, 201, res);

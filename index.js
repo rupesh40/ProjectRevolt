@@ -13,6 +13,7 @@ const globalErrorHandler = require("./utilities/errorController");
 const mongoSanitize = require("express-mongo-sanitize");
 const XSS = require("xss-clean");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(cors());
 app.use(helmet());
 app.use(
   bodyParser.urlencoded({
