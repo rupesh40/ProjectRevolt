@@ -13,13 +13,21 @@ const {
   resetPassword,
   updatePassword,
 } = require("./../services/authService.js");
+const User = require("../models/userModel.js");
 
 const router = Router();
 
+const filterObj = (obj, ...allowedFields)=>{
+  const newObj={}
+  Object.keys(obj).forEach(el=>{
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  })
+  return newObj
+}
 //signup the user
 router.post("/signup", bodyParser, signup);
 
-//sign's in the user
+//sign in the user
 router.post("/login", bodyParser, login);
 
 //forget password
@@ -31,6 +39,28 @@ router.patch("/reset-Password/:token", bodyParser, resetPassword);
 //update the password
 router.patch("/updateMyPassword", bodyParser, protect, updatePassword);
 
+//user can update data [role:user]
+router.patch("/updateMe",bodyParser,protect,catchAsync(async (req,res,next)=>{
+  //1. create error if user try to change password
+   if(req.body.password) return next(new AppError("this route is not for password-update please use /updateMyPassword",400))
+   
+   //2.filtered out unwanted field names  that are not allowed tobe updated 
+   const filteredBody = filterObj(req.body, "firstName","lastName","phoneNumber",)
+   
+   //3.update the users data
+   const updatedUser = await UserModel.findByIdAndUpdate(req.user.id, filteredBody,{
+     new:true,
+     runValidators:true
+   })
+   
+   
+   res.status(200).json({
+     status:"success",
+     user: updatedUser
+   })
+
+  }))
+
 // sends all users from db
 router.get(
   "/",
@@ -40,6 +70,7 @@ router.get(
     res.json(users);
   })
 );
+
 
 //adds a new user to the db
 router.post(
@@ -52,7 +83,7 @@ router.post(
   })
 );
 
-//task 1.1 / updates the users data to db
+//task 1.1 / updates the users data to db[role :admin]
 router.patch(
   "/update-user/:id",
   bodyParser,

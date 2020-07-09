@@ -10,6 +10,8 @@ const users = require("./api/users");
 const gridStationUse = require("./api/gridStationUse");
 const AppError = require("./utilities/appError");
 const globalErrorHandler = require("./utilities/errorController");
+const mongoSanitize = require("express-mongo-sanitize");
+const XSS = require("xss-clean");
 
 const app = express();
 
@@ -24,10 +26,14 @@ app.use(
   })
 );
 
-const DB = process.env.DATABASE;
+app.use(mongoSanitize()); //data sanitization against NoSQL querry injection
+
+app.use(XSS()) // data sanitization against XSS
+
+;const DB = process.env.DATABASE;
 
 mongoose
-  .connect(DB, { useNewUrlParser: "True", useUnifiedTopology: "True" })
+  .connect(DB, { useNewUrlParser: "True", useUnifiedTopology: "True",useCreateIndex: true })
   .catch((error) => handleError(error));
 
 mongoose.connection.on("error", (err) => {
@@ -36,11 +42,6 @@ mongoose.connection.on("error", (err) => {
 
 mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected");
-});
-
-app.use((req, res, next) => {
-  console.log(req.headers);
-  next();
 });
 
 app.use("/api/users", users);
