@@ -1,6 +1,7 @@
 const { Router } = require("express");
 bodyParser = require("body-parser").json();
 const catchAsync = require("./../utilities/catchAsync");
+const AppError = require("./../utilities/appError");
 
 const GridStationModel = require("../models/gridStationModel.js");
 
@@ -73,6 +74,11 @@ router.get(
   "/find-station/:id",
   catchAsync(async (req, res) => {
     const Grid = await GridStationModel.findById(req.params.id);
+
+    if (!Grid) {
+      return next(new AppError("No user found", 404));
+    }
+
     res.status(200).json({
       status: "success",
       data: {

@@ -37,6 +37,7 @@ mongoose.connection.on("error", (err) => {
 mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected");
 });
+
 app.use((req, res, next) => {
   console.log(req.headers);
   next();

@@ -1,31 +1,33 @@
 //task 2 /create schema for gridStation
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
 const requiredString = {
-    type: String,
-    required: true
+  type: String,
+  required: true,
 };
 
 const requiredNumber = {
-    type: Number,
-    required: true
+  type: Number,
+  required: true,
 };
 
-const gridStationSchema = new Schema({
-    Name : requiredString,
+const gridStationSchema = new Schema(
+  {
+    Name: requiredString,
     email: {
-        type: String,
-        required: [true, "can't be blank"],
-        match: [/\S+@\S+\.\S+/, 'is invalid'],
-        index: true
+      type: String,
+      required: [true, "can't be blank"],
+      match: [/\S+@\S+\.\S+/, "is invalid"],
+      index: true,
+      unique: true,
     },
     phoneNumber: Number,
-    password:{
-        type:String,
-        required:true
+    password: {
+      type: String,
+      required: true,
     },
     // StationAddress: {
     //     latitude: {
@@ -41,14 +43,12 @@ const gridStationSchema = new Schema({
     //},
     //stationNumber: requiredNumber,
     //NoOfChargingPoint: requiredNumber,
-
-},
-{
-    timestamps: true
-}
+  },
+  {
+    timestamps: true,
+  }
 );
 
+const GridStationModel = mongoose.model("GridStationModel", gridStationSchema);
 
-const GridStationModel = mongoose.model('GridStationModel', gridStationSchema);
-
-module.exports = GridStationModel; 
+module.exports = GridStationModel;

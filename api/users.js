@@ -1,6 +1,7 @@
 const { Router } = require("express");
 bodyParser = require("body-parser").json();
 const catchAsync = require("./../utilities/catchAsync");
+const AppError = require("./../utilities/appError");
 
 const UserModel = require("../models/userModel.js");
 
@@ -84,9 +85,13 @@ router.delete(
 
 //task 1.3 / find by id
 router.get(
-  " ",
+  "/:id",
   catchAsync(async (req, res, next) => {
-    const users = await UserModel.findById(rq.params.id);
+    const users = await UserModel.findById(req.params.id);
+
+    if (!users) {
+      return next(new AppError("No user found", 404));
+    }
     res.status(200).json({
       status: "success",
       data: { users },
