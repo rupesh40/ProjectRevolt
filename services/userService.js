@@ -27,3 +27,13 @@ exports.isLoggedIn = catchAsync (async (req, res, next) => {
      }
      next()
   });
+
+  exports.loggedOut = (req,res)=>{
+    res.cookies("jwt","logged out",{
+      expires: new Date(Date.now() + 10 * 1000),
+      httponly:true
+    })
+    res.status(200).json({
+      status:"success"
+    })
+  }

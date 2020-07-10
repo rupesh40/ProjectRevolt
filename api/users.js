@@ -2,9 +2,7 @@ const { Router } = require("express");
 bodyParser = require("body-parser").json();
 const catchAsync = require("./../utilities/catchAsync");
 const AppError = require("./../utilities/appError");
-
 const UserModel = require("../models/userModel.js");
-
 const {
   signup,
   login,
@@ -13,7 +11,8 @@ const {
   resetPassword,
   updatePassword,
 } = require("./../services/authService.js");
-const User = require("../models/userModel.js");
+
+const {isLoggedIn,loggedOut}= require("./../services/userService");
 
 const router = Router();
 
@@ -29,6 +28,9 @@ router.post("/signup", bodyParser, signup);
 
 //sign in the user
 router.post("/login", bodyParser, login);
+
+//logout the user
+router.get("/logout",loggedOut)
 
 //forget password
 router.post("/forget-Password", bodyParser, forgetPassword);
