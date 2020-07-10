@@ -4,12 +4,14 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 import PlanTrip from "./PlanTrip.jsx";
-import UserForm from "./AddStation/UserForm.js";
-
+import AddStation from "./AddStation.jsx";
+import Vehicle from './Vehicle.jsx'
 export class DashNavigation extends Component {
   state = {
     Page: false,
     showHide: false,
+    showHide1: false,
+    showHideV:false,
   };
   PAGE = () => {
     //const {page}=this.state
@@ -18,14 +20,24 @@ export class DashNavigation extends Component {
   handleModalShowHide = () => {
     this.setState({ showHide: !this.state.showHide });
   };
+  handleModalShowHide1 = () => {
+    this.setState({ showHide1: !this.state.showHide1 });
+  };
+  handleModalShowHideV = () => {
+    this.setState({ showHideV: !this.state.showHideV });
+  };
   render() {
-    const { showHide, Page } = this.state;
+    const { showHide, showHide1,showHideV } = this.state;
     return (
       <div>
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="">
+        <nav
+          style={{ backgroundColor: "#fed136" }}
+          class="sb-topnav navbar navbar-expand navbar-dark"
+        >
+          <a class="navbar-brand" style={{ color: "black" }} href="">
             REVOLT
           </a>
+
           <button
             class="btn btn-link btn-sm order-1 order-lg-0"
             id="sidebarToggle"
@@ -33,7 +45,16 @@ export class DashNavigation extends Component {
           >
             <i class="fas fa-bars"></i>
           </button>
-          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-1 my-0 my-md-0">
+
+          <button
+            class="btn btn-link btn-sm order-3 order-lg-6 "
+            id="Vehicle"
+            href="#"
+            onClick={this.handleModalShowHideV}
+          >
+            Vehicle
+          </button>
+          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-4 my-0 my-md-0">
             <div class="input-group">
               <input
                 class="form-control"
@@ -42,17 +63,18 @@ export class DashNavigation extends Component {
                 aria-label="Search"
                 aria-describedby="basic-addon2"
               />
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
             </div>
           </form>
+
+          <div class="input-group-append">
+            <button class="btn btn-dark my-5" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
           <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle text-dark"
                 id="userDropdown"
                 href="#"
                 role="button"
@@ -60,10 +82,10 @@ export class DashNavigation extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="fas fa-user fa-fw"></i>
+                <i class="fas fa-user fa-fw text-dark"></i>
               </a>
               <div
-                class="dropdown-menu dropdown-menu-right"
+                class="dropdown-menu dropdown-menu-right "
                 aria-labelledby="userDropdown"
               >
                 <a class="dropdown-item" href="">
@@ -84,61 +106,93 @@ export class DashNavigation extends Component {
         <div id="layoutSidenav">
           <div id="layoutSidenav_nav">
             <nav
+              style={{ backgroundColor: "#fed136" }}
               class="sb-sidenav accordion sb-sidenav-dark "
               id="sidenavAccordion"
             >
-              <div class="sb-sidenav-menu">
+              <div
+                class="sb-sidenav-menu"
+                style={{ color: "black", fontSize: "18px" }}
+              >
                 <div class="nav">
-                  <a class="nav-link" href="#Page" onClick={this.PAGE}>
+                  <a
+                    class="nav-link"
+                    href="#Page"
+                    onClick={this.handleModalShowHide1}
+                    style={{ color: "black" }}
+                  >
                     <div class="sb-nav-link-icon">
-                      <i class="fas fa-map-marked-alt"></i>
+                      <i
+                        class="fas fa-map-marked-alt"
+                        style={{ color: "black" }}
+                      ></i>
                     </div>
                     Add Station
                   </a>
 
                   <a
                     class="nav-link"
+                    style={{ color: "black" }}
                     href="#p"
                     onClick={this.handleModalShowHide}
                   >
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-map-marked-alt"></i>
+                    <div class="sb-nav-link-icon" style={{ color: "black" }}>
+                      <i class="fas fa-car"></i>
                     </div>
                     Make your trip
                   </a>
 
-                  <a class="nav-link">
-                    <div class="sb-nav-link-icon">
+                  <a class="nav-link" style={{ color: "black" }}>
+                    <div class="sb-nav-link-icon" style={{ color: "black" }}>
                       <i class="fas fa-history"></i>
                     </div>
                     Recent Activity
                   </a>
 
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
+                  <a
+                    class="nav-link"
+                    href="index.html"
+                    style={{ color: "black" }}
+                  >
+                    <div class="sb-nav-link-icon" style={{ color: "black" }}>
                       <i class="fas fa-bookmark"></i>
                     </div>
                     Bookmarks
                   </a>
 
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
+                  <a
+                    class="nav-link"
+                    href="index.html"
+                    style={{ color: "black" }}
+                  >
+                    <div class="sb-nav-link-icon" style={{ color: "black" }}>
                       <i class="fas fa-question-circle"></i>
                     </div>
                     Help
                   </a>
 
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
+                  <a
+                    class="nav-link"
+                    href="index.html"
+                    style={{ color: "black" }}
+                  >
+                    <div class="sb-nav-link-icon" style={{ color: "black" }}>
                       <i class="fas fa-comment-alt"></i>
                     </div>
                     Feedback
                   </a>
                 </div>
               </div>
-              <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                User Name
+              <div
+                class="sb-sidenav-footer"
+                style={{ backgroundColor: "#fec503", fontSize: "18px" }}
+              >
+                <div class="small" style={{ color: "black" }}>
+                  Logged in as:
+                </div>
+                <div class="small" style={{ color: "black" }}>
+                  User Name
+                </div>
               </div>
             </nav>
           </div>
@@ -150,7 +204,23 @@ export class DashNavigation extends Component {
               />
             )}
           </div>
-          <div i="Page">{Page && <UserForm />}</div>
+          <div id="Page">
+            {showHide1 && (
+              <AddStation
+                showHide1={showHide1}
+                handleModalShowHide1={this.handleModalShowHide1}
+              />
+            )}
+          </div>
+          <div id="Vehicle">
+            {showHideV && (
+              <Vehicle
+                showHideV={showHideV}
+                handleModalShowHideV={this.handleModalShowHideV}
+              />
+            )}
+          </div>
+
 
           <div id="layoutSidenav_content">
             <main></main>
