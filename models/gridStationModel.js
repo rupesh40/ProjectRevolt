@@ -14,6 +14,8 @@ const requiredNumber = {
   required: true,
 };
 
+// Add StationAddress, TotalCapacity, AvailableCapacity, isOpen, WorkingTimes e.g. 9AM-5PM, Owner.
+
 const gridStationSchema = new Schema(
   {
     Name: requiredString,
