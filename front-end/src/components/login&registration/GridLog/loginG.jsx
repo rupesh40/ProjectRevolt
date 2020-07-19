@@ -33,7 +33,7 @@ export  class LoginG extends React.Component {
        
         <div className="footer">
           <button type="button" onClick={this.change} className="btn1" >
-          <Link to="/HomeNavigation" style={{color:'white'}}> Login</Link>
+          <Link to="/DashNavigationGrid" style={{color:'white'}}> Login</Link>
           </button>
           <br/><br/>
           <p >

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-//import ChargingStation from './ChargingStation'
-import "./styles.css";
 import {Link} from 'react-router-dom';
 
+//import ChargingStation from './ChargingStation'
+import "./styles.css";
 //import { Link } from "react-router-dom";
 import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 //import MapContainer from './MapContainer.jsx'
-export class DashNavigation extends Component {
+export class DashNavigationGrid extends Component {
   state = {
     Page: false,
     showHide: false,
@@ -47,6 +47,10 @@ export class DashNavigation extends Component {
           >
             <i class="fas fa-bars"></i>
           </button>
+          
+          
+          
+          
           <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-4 my-0 my-md-0">
             <div class="input-group">
               <input
@@ -248,4 +252,4 @@ export class DashNavigation extends Component {
   }
 }
 
-export default DashNavigation;
+export default DashNavigationGrid;
