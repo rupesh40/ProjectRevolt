@@ -13,7 +13,7 @@ const res = await axios({
     }
 
 })
-console.log(res)
+return res
     }
     catch(err){
         console.log(err.response.data);
@@ -23,7 +23,6 @@ console.log(res)
 
 export const register = async (data) =>{
     try{
-        console.log("in register")
         const {firstName,lastName,email,phoneNumber,password} = data
 const res = await axios({
     method:"POST",

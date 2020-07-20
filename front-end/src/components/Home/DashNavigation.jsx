@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
+import auth from "../Backend/auth";
 //import MapContainer from './MapContainer.jsx'
 export class DashNavigation extends Component {
   state = {
@@ -102,7 +103,7 @@ export class DashNavigation extends Component {
           >
             Vehicle
           </button>
-          <Link  to="/LogOut"><button 
+          <Link  to="/LogOut"><button onClick={()=>{auth.logout()}}
           class="  btn btn-sm align-end m-2 "
           id="LogOut"
         >Log Out</button></Link>

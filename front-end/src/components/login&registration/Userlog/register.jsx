@@ -25,7 +25,7 @@ onSubmit= async e =>{
       const Data={
         firstName:this.state.firstName,
         lastName:this.state.lastName,
-        password:this.state.password*1,
+        password:this.state.password ,
         email:this.state.email,
 
         phoneNumber:this.state.phoneNumber*1

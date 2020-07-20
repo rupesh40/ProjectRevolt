@@ -16,6 +16,7 @@ import Interface from './components/login&registration/Interface.jsx'
 import Log from './components/login&registration/Log.jsx'
 import DashNavigation from './components/Home/DashNavigation.jsx'
 import DashNavigationGrid from './components/HomeGrid/DashNavigationGrid.jsx'
+import {ProtectedRoute} from "./protectedRoutes.js"
 
 class App extends React.Component {
   state={
@@ -31,15 +32,16 @@ class App extends React.Component {
     <div >
       
 <BrowserRouter>
+<Switch>
     <Route path="/loginU" exact component={LoginRegisterUser}/>
     <Route path="/loginG" exact component={GridLoginRegister}/>
-    <Route path="/DashNavigationGrid" exact component={DashNavigationGrid}/>
+    <Route path="/DashNavigationGrid" exact component={DashNavigationGrid}/>   {/*need to be ProtectedRoute*/}
    
-    <Route path="/DashNavigation" exact component={DashNavigation}/>
+    <Route path="/DashNavigation" exact component={DashNavigation}/>       {/*need to be protectedRoutes*/}
     <Route path="/" exact component={Main}/>
     
     <Route path="/LogOut" exact component={Main}/>
-    
+    </Switch>
     </BrowserRouter>
  </div>
   );

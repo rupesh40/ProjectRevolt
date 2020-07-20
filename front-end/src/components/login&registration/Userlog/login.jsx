@@ -4,8 +4,10 @@ import {Link} from 'react-router-dom';
 import "../Styling/style.scss";
 import "../Styling/App.scss";
 import 'bootstrap/dist/css/bootstrap.css'
+import {withRouter} from 'react-router'
 import login from "../../Backend/user"
-export  class Login extends React.Component {
+import auth from "../../Backend/auth.js"
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
@@ -24,17 +26,21 @@ changeEmail = e =>{
 changePassword=e=>{
   this.setState({password:e.target.value})
 }
-onSubmit=e=>{
+onSubmit=async e=>{
   e.preventDefault()
 const data={
 
 email:this.state.email,
 password:this.state.password
 }
-login(data) 
+let res =  await login(data) 
+if (res){
+  console.log(res)
+  auth.login()
+  this.props.history.push("/DashNavigation")
+  
 
-
-
+}
 }
   render() {
     return (
@@ -60,9 +66,11 @@ login(data)
           
        
         <div className="footer">
-          <button type="button" onClick={this.change} className="btn1" >
-          <Link to="/DashNavigation" style={{color:'white'}}> Login</Link>
+          <Link to ="/DashNavigation">{/** after integrating react with node ,need to remove Link-tag*/}
+          <button type="submit" onClick={this.change} className="btn1" >
+          Login
           </button>
+          </Link>
          <br/><br/>
           <p >
                     Forgot <a href="#">password?</a>
@@ -74,3 +82,4 @@ login(data)
     );
   }
 }
+export default withRouter(Login)
