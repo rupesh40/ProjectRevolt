@@ -67,19 +67,19 @@ router.patch("/updateMe",bodyParser,protect,catchAsync(async (req,res,next)=>{
 router.get(
   "/",
   protect,
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res, next) => {     //need to add restrictTO middleware from authServices.js 
     const users = await UserModel.find();
     res.json(users);
   })
 );
 
 
-//adds a new user to the db
+//adds a new user to the db [role:admin]
 router.post(
   "/",
   bodyParser,
   catchAsync(async (req, res, next) => {
-    const user = new UserModel(req.body);
+    const user = new UserModel(req.body);     // need to add restrictTo middleware from authService.js
     const createdUser = await user.save();
     res.json(createdUser);
   })
@@ -89,9 +89,9 @@ router.post(
 router.patch(
   "/update-user/:id",
   bodyParser,
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res, next) => {         // need to add restrictTo middleware from authService.js
     const user1 = await UserModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+      new: true,                                                               
       runValidators: true,
     });
 
@@ -103,10 +103,10 @@ router.patch(
     });
   })
 );
-// task 1.2 / delete the user from db
+// task 1.2 / delete the user from db 
 
 router.delete(
-  "/delete-user/:id",
+  "/delete-user/:id",isLoggedIn,
   catchAsync(async (req, res, next) => {
     await UserModel.findByIdAndDelete(req.params.id);
     res.status(200).json({

@@ -18,8 +18,8 @@ const signToken = (id) => {
 
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
-  //sending token to httponlyCookie 
 
+  //sending token to httpOnlyCookie 
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -31,9 +31,8 @@ const createSendToken = (user, statusCode, res) => {
 
   res.cookie("jwt", token, cookieOptions);
   
-  //removing passowrd from the output
-   
-  user.password= undefined
+  //removing password from the output
+   user.password= undefined
 
   res.status(statusCode).json({
     status: "success",
@@ -52,7 +51,7 @@ exports.signup = async (req, res, next) => {
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,
       
-    });
+    });//this method does not add user-role to DB, if want to add role to DB then include in above via req.body
 
     createSendToken(newUser, 201, res);
   } catch (err) {
@@ -75,7 +74,7 @@ exports.login = async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password)))
     return next(new AppError("email or password is incorrect", 401));
 
-  //3)check if everything is okay then send tokecn to client
+  //3)check if everything is okay then send token to client
   createSendToken(user, 201, res);
 };
 

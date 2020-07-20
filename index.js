@@ -33,9 +33,9 @@ app.use(cookieParser()); //parses (data) cookie from incomming request
 
 app.use(mongoSanitize()); //data sanitization against NoSQL querry injection
 
-app.use(XSS()) // data sanitization against XSS
+app.use(XSS()); // data sanitization against XSS
 
-;const DB = process.env.DATABASE;
+const DB = process.env.DATABASE;
 
 mongoose
   .connect(DB, { useNewUrlParser: "True", useUnifiedTopology: "True",useCreateIndex: true })

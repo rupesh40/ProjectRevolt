@@ -31,20 +31,29 @@ const gridStationSchema = new Schema(
       type: String,
       required: true,
     },
-    // StationAddress: {
-    //     latitude: {
-    //         ...requiredNumber,
-    //         min: -90,
-    //         max: 90,
-    //     },
-    //     longitude: {
-    //         ...requiredNumber,
-    //         min: -180,
-    //         max: 180
-    //     }
-    //},
-    //stationNumber: requiredNumber,
-    //NoOfChargingPoint: requiredNumber,
+    isOpen:{
+      type:String,
+      enum:["open","closed"],
+      default:"open"
+    },
+    WorkingTimes:{
+      type:String
+    },
+
+     StationAddress: {
+         latitude: {
+             ...requiredNumber,
+             min: -90,
+             max: 90,
+         },
+         longitude: {
+             ...requiredNumber,
+             min: -180,
+             max: 180
+         }
+    },
+    stationNumber: requiredNumber,
+    NoOfChargingPoint: requiredNumber,
   },
   {
     timestamps: true,
