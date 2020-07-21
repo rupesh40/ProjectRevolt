@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 //import img from './bg.jpg'
-import Portfolio from '../../Home/Portfolio.jsx'
-import '../Styling/nav.css';
-import '../Styling/Home.css'
-import Navigation from '../../Navigation.jsx'
+import Portfolio from './Portfolio.jsx'
+import '../UI/nav.css';
+import '../UI/Home.css'
+import Navigation from '../Navigation.jsx'
 import './Styling/ContactUs.css'
 import './Styling/AboutTeam.css'
 import ContactUs from './Styling/ContactUs.jpg'

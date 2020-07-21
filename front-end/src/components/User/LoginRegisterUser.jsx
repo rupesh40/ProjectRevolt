@@ -1,17 +1,17 @@
 import React from "react";
-import "./Styling/App.scss";
-import "./Styling/nav.css";
-import "./Styling/style.scss";
-import { LoginG } from "./GridLog/loginG.jsx";
-import { RegisterG } from "./GridLog/registerG.jsx";
+import "../UI/App.scss";
+import '../UI/nav.css';
+import "../UI/style.scss";
+import { Login } from "./Userlog/login.jsx";
+import { Register } from "./Userlog/register.jsx";
 //import {BrowserRouter,Route} from 'react-router-dom'
-import Navigation from "../Navigation.jsx";
-class GridLoginRegister extends React.Component {
+//import LoginNavigation from './LoginNavigation.jsx'
+class LoginRegisterUser extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       isLogginActive: true,
-      a: false,
     };
   }
 
@@ -30,49 +30,48 @@ class GridLoginRegister extends React.Component {
       this.rightSide.classList.remove("left");
       this.rightSide.classList.add("right");
     }
-    this.setState((prevState) => ({
-      isLogginActive: !prevState.isLogginActive,
-    }));
+    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
   }
-  check = () => {
-    this.setState({ a: true });
-  };
-  //   back=()=>{
-  //    this.State.a && this.props.call
-  //  }
+  check=()=>{
+    this.setState({a:true})
+  }
+ 
 
   render() {
-    const { isLogginActive, a } = this.state;
+    
+  
+    const { isLogginActive,a } = this.state;
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     return (
       <div className="App">
-        <Navigation />
+  
         <div className="login">
-          <div className="container" ref={(ref) => (this.container = ref)}>
+        
+         
+          
+          <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <LoginG
-                containerRef={(ref) => (this.current = ref)}
-                check={this.check}
-              />
-            )}
+              <Login containerRef={ref => (this.current = ref)} check={this.check}   />
+            ) }
             {!isLogginActive && (
-              <RegisterG containerRef={(ref) => (this.current = ref)} />
+              <Register containerRef={ref => (this.current = ref)} />
             )}
           </div>
           <RightSide
             current={current}
             currentActive={currentActive}
-            containerRef={(ref) => (this.rightSide = ref)}
-            onClick={this.changeState.bind(this)}
+            containerRef={ref => (this.rightSide = ref)}
+            onClick={this.changeState.bind(this) }
           />
         </div>
       </div>
     );
+  
   }
 }
 
-const RightSide = (props) => {
+const RightSide = props => {
   return (
     <div
       className="right-side"
@@ -84,6 +83,7 @@ const RightSide = (props) => {
       </div>
     </div>
   );
+  
 };
 
-export default GridLoginRegister;
+export default LoginRegisterUser;

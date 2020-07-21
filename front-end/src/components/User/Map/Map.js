@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
 import Autocomplete from 'react-google-autocomplete';
-import { GoogleMapsAPI } from '../client-config';
+import { GoogleMapsAPI } from './client-config';
 Geocode.setApiKey( GoogleMapsAPI );
 Geocode.enableDebug();
 
@@ -237,10 +237,11 @@ class Map extends Component{
 						<Autocomplete
 							style={{
 								width: '100%',
-								height: '40px',
-								paddingLeft: '16px',
-								marginTop: '2px',
-								marginBottom: '500px'
+								height: '30px',
+								paddingLeft: '8px',
+								marginTop: '5px',
+								marginBottom:'5px',
+								color:'black'
 							}}
 							onPlaceSelected={ this.onPlaceSelected }
 							types={['(regions)']}

@@ -1,8 +1,8 @@
 import React from "react";
-import loginImg from "../Styling/log.png";
+import loginImg from "../../UI/log.png";
 import {Link} from 'react-router-dom';
-import "../Styling/style.scss";
-import "../Styling/App.scss";
+//import "../Styling/style.scss";
+//import "../Styling/App.scss";
 import 'bootstrap/dist/css/bootstrap.css'
 import login from "../../Backend/user"
 export  class Login extends React.Component {

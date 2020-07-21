@@ -1,8 +1,8 @@
 import React from "react";
-import loginImg from "../Styling/log.png";
-import moduleName from '../Styling/Home.css'
-import "../Styling/style.scss";
-import "../Styling/App.scss";
+import loginImg from "../../UI/log.png";
+import moduleName from '../../UI/Home.css'
+//import "../Styling/style.scss";
+//import "../Styling/App.scss";
 import {register} from "../../Backend/user" 
 export class Register extends React.Component {
   constructor(props) {

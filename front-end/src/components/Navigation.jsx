@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-import Interface from './login&registration/Interface.jsx'
+import Interface from './FirstScreen/Interface.jsx'
 function Navigation() {
   const [modalShow, setModalShow] = React.useState(false);
 return(

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Navigation from '../Navigation.jsx'
-import "./Styling/style.scss";
-import "./Styling/Inter.css";
+import "../UI/style.scss";
+import "../UI/Inter.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 // import moduleName from './Log.jsx'

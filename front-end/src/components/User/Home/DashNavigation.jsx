@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-//import ChargingStation from './ChargingStation'
-import "./styles.css";
 import {Link} from 'react-router-dom';
 
+//import ChargingStation from './ChargingStation'
+import "./styles.css";
 //import { Link } from "react-router-dom";
 import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
-//import MapContainer from './MapContainer.jsx'
+//import DashMap from '../Map/DashMap.js'
 export class DashNavigation extends Component {
   state = {
     Page: false,
@@ -47,6 +47,10 @@ export class DashNavigation extends Component {
           >
             <i class="fas fa-bars"></i>
           </button>
+          
+          
+          
+          
           <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-4 my-0 my-md-0">
             <div class="input-group">
               <input
@@ -225,7 +229,6 @@ export class DashNavigation extends Component {
               />
             )}
           </div>
-          
               
           <div id="layoutSidenav_content">
             <main></main>

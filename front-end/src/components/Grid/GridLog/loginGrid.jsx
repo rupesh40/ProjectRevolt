@@ -1,9 +1,9 @@
 import React from "react";
-import loginImg from "../Styling/log.png";
+import loginImg from "../../UI/log.png";
 import {Link} from 'react-router-dom';
-import "../Styling/style.scss";
-import "../Styling/App.scss";
-export  class LoginG extends React.Component {
+//import "../Styling/style.scss";
+//import "../Styling/App.scss";
+export  class LoginGrid extends React.Component {
   constructor(props) {
     super(props);
   }

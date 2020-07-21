@@ -1,9 +1,9 @@
 import React from "react";
-import loginImg from "../Styling/log.png";
-import moduleName from '../Styling/Home.css'
-import "../Styling/style.scss";
-import "../Styling/App.scss";
-export class RegisterG extends React.Component {
+import loginImg from "../../UI/log.png";
+import moduleName from '../../UI/Home.css'
+//import "../Styling/style.scss";
+//import "../Styling/App.scss";
+export class RegisterGrid extends React.Component {
   constructor(props) {
     super(props);
   }

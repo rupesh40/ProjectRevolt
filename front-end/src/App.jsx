@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import LoginRegisterUser from './components/login&registration/LoginRegisterUser.jsx'
-import GridLoginRegister from './components/login&registration/GridLoginRegister.jsx'
-import {BrowserRouter,Route,Switch}from 'react-router-dom'
+import LoginRegisterUser from './components/User/LoginRegisterUser.jsx'
+import GridLoginRegister from './components/Grid/GridLoginRegister.jsx'
+import {BrowserRouter,Route}from 'react-router-dom'
 import Navigation from './components/Navigation.jsx'
-import Main from './components/login&registration/Main/main.jsx'
-//import Home from './components/Home/Home.js'
-import Interface from './components/login&registration/Interface.jsx'
-//import HomeNavigation from './components/Home/HomeNavigation.jsx';
-//import About from './components/Home/About.js';
-//import ChargingStation from './components/Home/ChargingStation.js';
-//import Network from './components/Home/Network.js';
-//import Services from './components/Home/Services.jsx';
-//import Trip from './components/Home/Trip.jsx';
-import Log from './components/login&registration/Log.jsx'
-import DashNavigation from './components/Home/DashNavigation.jsx'
-import DashNavigationGrid from './components/HomeGrid/DashNavigationGrid.jsx'
+import Main from './components/FirstScreen/main.jsx'
+import DashNavigation from './components/User/Home/DashNavigation.jsx'
+import DashNavigationGrid from './components/Grid/HomeGrid/DashNavigationGrid.jsx'
 
 class App extends React.Component {
   state={
