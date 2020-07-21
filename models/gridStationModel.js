@@ -39,6 +39,12 @@ const gridStationSchema = new Schema(
     WorkingTimes:{
       type:String
     },
+    totalCapacity:{
+      type:String
+    },
+    availableCapacity:{
+      type:String
+    },
 
      StationAddress: {
          latitude: {

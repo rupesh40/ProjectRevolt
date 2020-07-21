@@ -1,36 +1,60 @@
-/**
- * Schema of models stays here.
- * schema is required to avoid confusions and to make objects uniform
- */
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
- // NOTE: we are not gonna export it or use it anywhere,
- //       think of it as an index or lookup to see how our models are related.
-schemas = {
-    // User schema
-    user: {
-        firstName: requiredString,
-        lastName: requiredString,
-        userName: requiredString,
-        email: {
-            type: String,
-            required: [true, "can't be blank"],
-            match: [/\S+@\S+\.\S+/, 'is invalid'],
-            index: true
+
+const requiredString = {
+    type: String,
+    required: true
+};
+
+const requiredNumber = {
+    type: Number,
+    required: true
+};
+
+const schema = new Schema({
+    role: {
+        type: String,
+        enum : ['user','admin'],
+        default: 'user'
+    },
+    firstName: requiredString,
+    lastName: requiredString,
+    //userName: requiredString,
+    password : {
+        type: String,
+        required:[true, "please provide password"],
+        minlength:4
+    },
+    email: {
+        type: String,
+        required: [true, "can't be blank"],
+        match: [/\S+@\S+\.\S+/, 'is invalid'],
+        unique:true
+        
+       
+    },
+    phoneNumber: requiredNumber,
+    /*Address: {
+        latitude: {
+            ...requiredNumber,
+            min: -90,
+            max: 90,
         },
-        phoneNumber: Number,
-        Address: {
-            latitude: {
-                ...requiredNumber,
-                min: -90,
-                max: 90,
-            },
-            longitude: {
-                ...requiredNumber,
-                min: -180,
-                max: 180
-            }
-        },
-        ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
-    }
+        longitude: {
+            ...requiredNumber,
+            min: -180,
+            max: 180
+        }
+    },*/
     
-}
+    passwordChangedAt : {type:Date},
+    passwordResetToken : {type:String},
+    passwordResetExpires :{type : Date},
+    
+}/*, {
+        timestamps: true
+    }*/
+);
+
+module.exports = schema

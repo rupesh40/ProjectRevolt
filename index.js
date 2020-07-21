@@ -7,6 +7,7 @@ const morgan = require("morgan"); // logs every request on the console
 const helmet = require("helmet"); // protects http request headers
 const middleWares = require("./middlewares"); // our custom middlewares
 const users = require("./api/users");
+const gridOwner = require("./api/gridOwner")
 const gridStationUse = require("./api/gridStationUse");
 const AppError = require("./utilities/appError");
 const globalErrorHandler = require("./utilities/errorController");
@@ -50,7 +51,7 @@ mongoose.connection.on("connected", (err, res) => {
 });
 
 app.use("/api/users", users);
-
+app.use("/api/gridOwner",gridOwner);
 app.use("/api/gridStation", gridStationUse);
 
 app.all("*", (req, res, next) => {

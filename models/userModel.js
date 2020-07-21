@@ -1,58 +1,15 @@
 const mongoose = require('mongoose');
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
-const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
-const requiredString = {
-    type: String,
-    required: true
-};
+const extendSchema = require("mongoose-extend-schema");
+const schema = require("./schema")
 
-const requiredNumber = {
-    type: Number,
-    required: true
-};
+
 
 // TODO: need to add tracking fields. e.g. visited grid stations, etc.
-const userSchema = new Schema({
-    role: {
-        type: String,
-        enum : ['user','admin'],
-        default: 'user'
-    },
-    firstName: requiredString,
-    lastName: requiredString,
-    //userName: requiredString,
-    password : {
-        type: String,
-        required:[true, "please provide password"],
-        minlength:4
-    },
-    email: {
-        type: String,
-        required: [true, "can't be blank"],
-        match: [/\S+@\S+\.\S+/, 'is invalid'],
-        unique:true
-        
-       
-    },
-    phoneNumber: requiredNumber,
-    /*Address: {
-        latitude: {
-            ...requiredNumber,
-            min: -90,
-            max: 90,
-        },
-        longitude: {
-            ...requiredNumber,
-            min: -180,
-            max: 180
-        }
-    },*/
+const userSchema = extendSchema(schema,{
     
-    passwordChangedAt : {type:Date},
-    passwordResetToken : {type:String},
-    passwordResetExpires :{type : Date},
     
     ownedVehicals: [Number] // TODO: after creating vehical schema we'll change it to [vehicalSchema]
 }, {
@@ -103,6 +60,11 @@ userSchema.methods.createPasswordResetToken= function(){
  
 }
 
+//const gridSchema = extendSchema(userSchema);
+
 const User = mongoose.model('User', userSchema);
+//const GridOwner = mongoose.model("GridOwner",gridSchema);
+
+
 
 module.exports = User; 

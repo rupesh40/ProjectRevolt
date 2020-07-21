@@ -1,4 +1,4 @@
-const UserModel  = require('../models/userModel');
+const User  = require('../models/userModel');
 const AppError = require("./../utilities/appError");
 const catchAsync = require("./../utilities/catchAsync");
 const jwt = require("jsonwebtoken");  
@@ -13,11 +13,11 @@ exports.isLoggedIn = catchAsync (async (req, res, next) => {
     //3)check if users still exist
     const currentUser = await User.findById(decoded.id);
   
-    if (!currentUser) return next();
+    if (!currentUser) return next(new AppError("user has logged out",404));
   
     //4)check if  user changed password after token is issued
   
-    if (currentUser.changedPasswordAfter(decoded.iat)) return next();
+    if (currentUser.changedPasswordAfter(decoded.iat)) return next(new AppError("user has changed password recently",404));
   
     req.user = currentUser;
     
