@@ -7,7 +7,7 @@ import Navigation from './components/Navigation.jsx'
 import Main from './components/FirstScreen/main.jsx'
 import DashNavigation from './components/User/Home/DashNavigation.jsx'
 import DashNavigationGrid from './components/Grid/HomeGrid/DashNavigationGrid.jsx'
-
+import Temp from './components/Grid/GridLog/Temp.jsx'
 class App extends React.Component {
   state={
     called:false
@@ -25,7 +25,7 @@ class App extends React.Component {
     <Route path="/loginU" exact component={LoginRegisterUser}/>
     <Route path="/loginG" exact component={GridLoginRegister}/>
     <Route path="/DashNavigationGrid" exact component={DashNavigationGrid}/>
-   
+    <Route path="/Temp" exact component={Temp}/>
     <Route path="/DashNavigation" exact component={DashNavigation}/>
     <Route path="/" exact component={Main}/>
     

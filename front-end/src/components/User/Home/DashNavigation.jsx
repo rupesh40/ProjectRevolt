@@ -7,7 +7,7 @@ import "./styles.css";
 import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
-//import DashMap from '../Map/DashMap.js'
+import Map1 from '../Map/UserMap.jsx'
 export class DashNavigation extends Component {
   state = {
     Page: false,
@@ -205,7 +205,7 @@ export class DashNavigation extends Component {
               </div>
             </nav>
           </div>
-          <div id="p" style={{ backgroundSize: "cover", margin: "" }}>
+          <div id="p">
             {showHide && (
               <PlanTrip
                 showHide={showHide}
@@ -213,6 +213,8 @@ export class DashNavigation extends Component {
               />
             )}
           </div>
+          <div style={{background:'cover'}}><Map1/> </div>
+         
           <div id="Page">
             {showHide1 && (
               <AddStation
@@ -228,8 +230,7 @@ export class DashNavigation extends Component {
                 handleModalShowHideV={this.handleModalShowHideV}
               />
             )}
-          </div>
-              
+          </div>      
           <div id="layoutSidenav_content">
             <main></main>
             <footer class="py-4 bg-light mt-auto">

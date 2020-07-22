@@ -1,9 +1,9 @@
 body.modal-open .plan{
     padding-top: 100px;
-    margin: 100px;
+    margin-left: 100px;
     background-size: cover;
     
-    overflow: hidden;
+    overflow: auto;
     display:inline-block;
     background-repeat:no-repeat ;
     position: relative;

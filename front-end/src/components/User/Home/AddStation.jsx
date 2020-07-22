@@ -17,10 +17,12 @@ export default class AddStation extends React.Component {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           style={{
+            
             overflow: "auto",
             maxHeight: "100%",
             fontSize: "12px",
-            margin: "0px",
+            marginTop: "0px",
+            maxWidth:'100%'
           }}
           show={this.props.showHide1}
           className="bg-transparent  d-inline-block "
@@ -36,21 +38,20 @@ export default class AddStation extends React.Component {
               placeholder="Station Name"
               className="form-control form-control-sm validate"
             />
-            <br />
             Plug Type
             <input
               type="text"
               placeholder="Plug type"
               className="form-control form-control-sm validate"
             />
-            <br />
+          
             Total Hours
             <input
               type="text"
               placeholder="Total hours"
               className="form-control form-control-sm validate"
             />
-            <br />
+         
             <Button variant="primary">Search</Button>
             <hr />
             Options

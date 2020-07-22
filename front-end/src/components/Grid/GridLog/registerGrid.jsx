@@ -1,6 +1,7 @@
 import React from "react";
 import loginImg from "../../UI/log.png";
 import moduleName from '../../UI/Home.css'
+import {Link} from 'react-router-dom';
 //import "../Styling/style.scss";
 //import "../Styling/App.scss";
 export class RegisterGrid extends React.Component {
@@ -47,7 +48,7 @@ export class RegisterGrid extends React.Component {
         
         <div className="footer">
           <button type="button" className="btn1">
-            Register
+          <Link to="/Temp" style={{color:'white'}}>Add Station</Link>
           </button>
         </div>
         </div>
