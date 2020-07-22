@@ -213,7 +213,7 @@ export class DashNavigation extends Component {
               />
             )}
           </div>
-          <div style={{background:'cover'}}><Map1/> </div>
+          
          
           <div id="Page">
             {showHide1 && (
@@ -231,6 +231,7 @@ export class DashNavigation extends Component {
               />
             )}
           </div>      
+          <div><Map1/> </div>
           <div id="layoutSidenav_content">
             <main></main>
             <footer class="py-4 bg-light mt-auto">
