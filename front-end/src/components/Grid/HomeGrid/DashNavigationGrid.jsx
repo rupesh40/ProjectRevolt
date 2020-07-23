@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import "./styles.css";
 //import { Link } from "react-router-dom";
 import PlanTrip from "./PlanTrip.jsx";
-import AddStation from "./AddStation.jsx";
+import AddNewStation from "./AddNewStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 //import MapContainer from './MapContainer.jsx'
 export class DashNavigationGrid extends Component {
@@ -215,7 +215,7 @@ export class DashNavigationGrid extends Component {
           </div>
           <div id="Page">
             {showHide1 && (
-              <AddStation
+              <AddNewStation
                 showHide1={showHide1}
                 handleModalShowHide1={this.handleModalShowHide1}
               />
