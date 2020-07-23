@@ -1,8 +1,8 @@
 import React from "react";
 import {Route, Redirect} from "react-router-dom";
-import auth from "./components/Backend/auth.js"
+import auth from "./components/services/auth.js"
 
-export const ProtectedRoute = ({component:Component, ...rest}) =>{
+const ProtectedRoute = ({component:Component, ...rest}) =>{
     return (
         <Route
         {...rest}
@@ -23,3 +23,5 @@ export const ProtectedRoute = ({component:Component, ...rest}) =>{
         />
     )
 }
+
+export default ProtectedRoute

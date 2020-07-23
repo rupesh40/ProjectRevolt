@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 
 //import ChargingStation from './ChargingStation'
 import "./styles.css";
-//import { Link } from "react-router-dom";
 import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 import Map1 from '../Map/UserMap.jsx'
+import auth from "../../services/auth"
 export class DashNavigation extends Component {
   state = {
     Page: false,
@@ -106,7 +106,7 @@ export class DashNavigation extends Component {
           >
             Vehicle
           </button>
-          <Link  to="/LogOut"><button 
+          <Link  to="/LogOut"><button onclick={auth.logout()}
           class="  btn btn-sm align-end m-2 "
           id="LogOut"
         >Log Out</button></Link>

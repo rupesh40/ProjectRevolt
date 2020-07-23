@@ -2,7 +2,7 @@ import React from "react";
 import "../UI/App.scss";
 import '../UI/nav.css';
 import "../UI/style.scss";
-import { Login } from "./Userlog/login.jsx";
+import  Login  from "./Userlog/login.jsx";
 import { Register } from "./Userlog/register.jsx";
 //import {BrowserRouter,Route} from 'react-router-dom'
 //import LoginNavigation from './LoginNavigation.jsx'

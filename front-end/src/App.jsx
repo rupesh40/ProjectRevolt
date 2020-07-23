@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import LoginRegisterUser from './components/User/LoginRegisterUser.jsx'
 import GridLoginRegister from './components/Grid/GridLoginRegister.jsx'
-import {BrowserRouter,Route}from 'react-router-dom'
+import {BrowserRouter,Route, Switch}from 'react-router-dom'
 import Navigation from './components/Navigation.jsx'
 import Main from './components/FirstScreen/main.jsx'
 import DashNavigation from './components/User/Home/DashNavigation.jsx'
 import DashNavigationGrid from './components/Grid/HomeGrid/DashNavigationGrid.jsx'
 import Temp from './components/Grid/GridLog/Temp.jsx'
+import ProtectedRoute from "./protectedRoutes.js"
 class App extends React.Component {
   state={
     called:false
@@ -18,19 +19,20 @@ class App extends React.Component {
   }
   render(){
     
-    return (
+    return ( 
     <div >
-      
+    
 <BrowserRouter>
+<Switch>
     <Route path="/loginU" exact component={LoginRegisterUser}/>
     <Route path="/loginG" exact component={GridLoginRegister}/>
     <Route path="/DashNavigationGrid" exact component={DashNavigationGrid}/>
     <Route path="/Temp" exact component={Temp}/>
-    <Route path="/DashNavigation" exact component={DashNavigation}/>
+    <ProtectedRoute path="/DashNavigation"  component={DashNavigation}/>
     <Route path="/" exact component={Main}/>
     
     <Route path="/LogOut" exact component={Main}/>
-    
+    </Switch>
     </BrowserRouter>
  </div>
   );

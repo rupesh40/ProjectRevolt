@@ -13,7 +13,7 @@ const res = await axios({
     }
 
 })
-console.log(res)
+return res
     }
     catch(err){
         console.log(err.response.data);

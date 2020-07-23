@@ -1,11 +1,14 @@
 import React from "react";
 import loginImg from "../../UI/log.png";
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router'
 //import "../Styling/style.scss";
 //import "../Styling/App.scss";
 import 'bootstrap/dist/css/bootstrap.css'
-import login from "../../Backend/user"
-export  class Login extends React.Component {
+import login from "../../services/user"
+import auth from "../../services/auth"
+
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
@@ -24,22 +27,29 @@ changeEmail = e =>{
 changePassword=e=>{
   this.setState({password:e.target.value})
 }
-onSubmit=e=>{
+onSubmit=async e=>{
   e.preventDefault()
 const data={
 
 email:this.state.email,
 password:this.state.password
 }
-login(data) 
 
+let res =  await login(data) 
+if (res){
+  console.log(res)
+  auth.login()
+  this.props.history.push("/DashNavigation")
+  
+
+}
 
 
 }
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <form /*onSubmit={this.onSubmit}*/>
+        <form onSubmit={this.onSubmit}>
         <div className="header">User Login</div>
         <div className="content">
         
@@ -60,8 +70,8 @@ login(data)
           
        
         <div className="footer">
-          <button type="button" onClick={this.change} className="btn1" >
-          <Link to="/DashNavigation" style={{color:'white'}}> Login</Link>
+          <button type="submit" onClick={this.change} className="btn1" >Login
+          {/* <Link to="/DashNavigation" style={{color:'white'}}> Login</Link> */}
           </button>
          <br/><br/>
           <p >
@@ -74,3 +84,5 @@ login(data)
     );
   }
 }
+
+export default withRouter(Login)
