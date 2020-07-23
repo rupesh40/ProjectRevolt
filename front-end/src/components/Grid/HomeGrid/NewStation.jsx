@@ -10,7 +10,7 @@ export default class AddStation extends React.Component {
   state = {
     items:[],
     currentItem:{
-      text:'',
+      text:'input',
       key:''
     },
   }
@@ -139,14 +139,14 @@ export default class AddStation extends React.Component {
 
             <Button
               variant="primary"
-              onClick={this.handleInput}
+              onClick={() => this.handleModalShowHide()}
             >
               Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
         <AddNewStation handleInput={this.handleInput} 
-       text={this.state.currentItem.text} items={this.state.items} />
+       text={this.state.currentItem.text} items={this.state.items} currentItem={this.state.currentItem} />
         <ListItems handleInput={this.handleInput} 
        text={this.state.currentItem.text} items={this.state.items} />
      

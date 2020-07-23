@@ -6,36 +6,42 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import AddStation from './NewStation.jsx'
 export default class AddNewStation extends React.Component {
-  
   constructor(props){
     super(props);
     this.state = {
       items:[],
       currentItem:{
-        text:'',
+        text:'a',
         key:''
       },
       showHide1:false
     }
     this.addItem = this.addItem.bind(this);
-    this.handleInput = this.handleInput.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.setUpdate = this.setUpdate.bind(this);
   }
-  addItem(e){
-    e.preventDefault();
-    const newItem = this.state.currentItem;
-    if(newItem.text !==""){
-      const items = [...this.state.items, newItem];
-    }
-  }
-  handleInput(e){
+  handleInput=(e)=>{
+    
     this.setState({
       currentItem:{
         text: 'input',
         key: Date.now()
       }
     })
+  }
+  addItem(e){
+    e.preventDefault();
+    const newItem = this.state.currentItem;
+    if(newItem.text !==""){
+      const items = [...this.state.items, newItem];
+    this.setState({
+      items: items,
+      currentItem:{
+        text:'',
+        key:''
+      }
+    })
+    }
   }
   deleteItem(key){
     const filteredItems= this.state.items.filter(item =>
@@ -54,10 +60,13 @@ export default class AddNewStation extends React.Component {
         item.text= text;
       }
     })
-
+    this.setState({
+      items: items
+    })
     
    
   }
+
   handleModalShowHide() {
     this.props.handleModalShowHide1();
   }
@@ -88,14 +97,13 @@ export default class AddNewStation extends React.Component {
           onClick={this.handleModalShowHide1}>Add Station</Button></Modal.Title>
           <Modal.Body>
           <form id="to-do-form" onSubmit={this.addItem}>
-          <input type="text" placeholder="Enter task" value= {this.state.currentItem.text} ></input>
-          <button type="submit" onclick={this.props.handleInput}>Referesh</button>
+          <input type="text" placeholder="Enter task" value= {this.props.text} ></input>
+          <Button type="submit" varient='secondary' onClick={this.handleInput}>Refresh</Button>
         </form>
         <p>{this.state.items.text}</p>
         
           <ListItems items={this.state.items} deleteItem={this.deleteItem} setUpdate={this.setUpdate}/>
         
-           
           </Modal.Body>
 
           <Modal.Footer>
