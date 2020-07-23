@@ -27,10 +27,6 @@ const gridStationSchema = new Schema(
       unique: true,
     },
     phoneNumber: Number,
-    password: {
-      type: String,
-      required: true,
-    },
     isOpen:{
       type:String,
       enum:["open","closed"],
@@ -59,7 +55,9 @@ const gridStationSchema = new Schema(
          }
     },
     stationNumber: requiredNumber,
-    NoOfChargingPoint: requiredNumber,
+    NoOfChargingPoint: {
+      type:Number
+    },
   },
   {
     timestamps: true,
