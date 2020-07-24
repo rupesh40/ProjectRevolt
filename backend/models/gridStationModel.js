@@ -32,7 +32,7 @@ const gridStationSchema = new Schema(
       enum:["open","closed"],
       default:"open"
     },
-    WorkingTime:{
+    workingTime:{
       type:String
     },
     totalCapacity:{
@@ -42,7 +42,7 @@ const gridStationSchema = new Schema(
       type:String
     },
 
-     StationAddress: {
+     stationAddress: {
          latitude: {
              ...requiredNumber,
              min: -90,
@@ -55,7 +55,7 @@ const gridStationSchema = new Schema(
          }
     },
     stationNumber: requiredNumber,
-    NoOfChargingPoint: {
+    noOfChargingPoint: {
       type:Number
     },
   },

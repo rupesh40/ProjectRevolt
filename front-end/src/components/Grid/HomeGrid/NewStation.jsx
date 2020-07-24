@@ -6,6 +6,7 @@ import loginImg from "../../UI/download.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import AddNewStation from './AddNewStation.jsx'
+import {register,geom} from "../../services/gridStation"
 export default class AddStation extends React.Component {
   state = {
     items:[],
@@ -13,6 +14,13 @@ export default class AddStation extends React.Component {
       text:'',
       key:''
     },
+    email:"",
+    name:"",
+    phoneNumber:"",
+    stationNo:"",
+    workTime:"",
+    address:"",
+    noOfPoint:""
   }
   handleModalShowHide() {
     this.props.handleModalShowHide1();
@@ -26,6 +34,19 @@ export default class AddStation extends React.Component {
       }
     })
     console.log(this.state.currentItem.text)
+  }
+  onSubmit = () =>{
+    geom()
+    const data = {
+      Name:this.state.name,
+      email:this.state.email,
+      phoneNumber:this.state.phoneNumber,
+      workingTime:this.state.workTime,
+      stationAddress:this.address,
+      stationNumber:this.state.stationNo,
+      NoOfChargingPoint:this.state.noOfPoint
+    }
+  console.log(data)
   }
   render() {
     return (
@@ -64,6 +85,8 @@ export default class AddStation extends React.Component {
               name="username"
               placeholder="Station Name"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({name:e.target.value})}}
+              value={this.state.name}
             />
           </div>
           <div className="form-group">
@@ -73,6 +96,8 @@ export default class AddStation extends React.Component {
               name="email"
               placeholder="Station Email"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({email:e.target.value})}}
+              value={this.email}
             />
           </div>
           <div className="form-group">
@@ -82,6 +107,8 @@ export default class AddStation extends React.Component {
               name="password"
               placeholder="Station Phone Number"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({phoneNumber:e.target.value})}}
+              value={this.state.phoneNumber}
             />
           </div>
           <div className="form-group">
@@ -91,6 +118,8 @@ export default class AddStation extends React.Component {
               name="password"
               placeholder="Working Time"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({workTime:e.target.value})}}
+              value={this.state.workTime}
             />
           </div>
           <div className="form-group">
@@ -100,6 +129,8 @@ export default class AddStation extends React.Component {
               name="password"
               placeholder="Station Address"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({address:e.target.value})}}
+              value={this.state.address}
             />
           </div>
           <div className="form-group">
@@ -109,6 +140,8 @@ export default class AddStation extends React.Component {
               name="password"
               placeholder="Station Number"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({stationNo:e.target.value})}}
+              value={this.state.stationNo}
             />
           </div>
           <div className="form-group">
@@ -118,6 +151,8 @@ export default class AddStation extends React.Component {
               name="password"
               placeholder="Number of Charging Points"
               className="form-control form-control-sm validate"
+              onChange={e=>{this.setState({noOfPoint:e.target.value})}}
+              value={this.state.noO}
             />
           </div>
         </div>
@@ -139,7 +174,7 @@ export default class AddStation extends React.Component {
 
             <Button
               variant="primary"
-              onClick={this.handleInput}
+              onClick={() => {this.onSubmit();this.handleInput()}}
             >
               Save Changes
             </Button>
