@@ -1,33 +1,74 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import "./Styling/PlanTrip.css";
+import uuid from "uuid";
 import ListItems from './ListItems.jsx'
 import loginImg from "../../UI/download.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import AddNewStation from './AddNewStation.jsx'
 export default class AddStation extends React.Component {
-  state = {
-    items:[],
-    currentItem:{
-      text:'input',
-      key:''
-    },
-  }
+  constructor(props) {
+    super(props)
+
+   this.input=React.createRef()
+   this.state={
+       list:['a','b'],    
+      }     
+}
+ 
   handleModalShowHide() {
     this.props.handleModalShowHide1();
   }
-  handleInput=(e)=>{
+  addTask=()=>{
+    console.log(this.state.list)
+    const Items={
+            id:uuid.v4(),
+            value:'abc',
+            Date: new Date().toUTCString()
+        };
     
-    this.setState({
-      currentItem:{
-        text: 'input',
-        key: Date.now()
-      }
-    })
-    console.log(this.state.currentItem.text)
+        if(localStorage.getItem('list')==null){
+            const list=[]
+            list.push(Items);
+            localStorage.setItem("list",JSON.stringify(list))
+        }
+        else{
+            const list=JSON.parse(localStorage.getItem('list'))
+            list.push(Items)
+            localStorage.setItem("list",JSON.stringify(list))
+        }
+        this.setState({
+            list:JSON.parse(localStorage.getItem('list'))
+        });
+    }
+    
+componentDidMount() {
+  const list = window.localStorage.getItem('list');
+  const parsedList = JSON.parse(list);
+  if(list == null){
+      return false
   }
-  render() {
+  else{
+      this.setState({
+          list: parsedList,
+      })
+      console.log(this.state.list);
+  }
+}
+
+deleteItem=(event)=> {
+    
+  let index = event.target.getAttribute('data-key')
+  let listValue=JSON.parse(localStorage.getItem('list'));
+  listValue.splice(index,1)
+  this.setState({list:listValue});
+  localStorage.setItem('list',JSON.stringify(listValue))
+}
+
+    
+ render() {
+   const {list}=this.state
     return (
       <div>
         <Modal
@@ -139,17 +180,14 @@ export default class AddStation extends React.Component {
 
             <Button
               variant="primary"
-              onClick={() => this.handleModalShowHide()}
+              onClick={this.addTask}
             >
               Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
-        <AddNewStation handleInput={this.handleInput} 
-       text={this.state.currentItem.text} items={this.state.items} currentItem={this.state.currentItem} />
-        <ListItems handleInput={this.handleInput} 
-       text={this.state.currentItem.text} items={this.state.items} />
-     
+        <AddNewStation addTask={this.addTask} list={this.state.list}
+         input={this.input} index={this.props.index} deleteItem={this.deleteItem}/>
         </div>
     );
   }
