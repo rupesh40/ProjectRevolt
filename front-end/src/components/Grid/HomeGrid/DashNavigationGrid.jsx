@@ -5,10 +5,9 @@ import {Link} from 'react-router-dom';
 import "./styles.css";
 //import { Link } from "react-router-dom";
 import PlanTrip from "./PlanTrip.jsx";
-import AddStation from "./AddStation.jsx";
+import AddNewStation from "./AddNewStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 //import MapContainer from './MapContainer.jsx'
-import auth from "../../services/auth"
 export class DashNavigationGrid extends Component {
   state = {
     Page: false,
@@ -107,7 +106,7 @@ export class DashNavigationGrid extends Component {
           >
             Vehicle
           </button>
-          <Link  to="/LogOut"><button onClick={auth.logout()}
+          <Link  to="/LogOut"><button 
           class="  btn btn-sm align-end m-2 "
           id="LogOut"
         >Log Out</button></Link>
@@ -216,7 +215,7 @@ export class DashNavigationGrid extends Component {
           </div>
           <div id="Page">
             {showHide1 && (
-              <AddStation
+              <AddNewStation
                 showHide1={showHide1}
                 handleModalShowHide1={this.handleModalShowHide1}
               />
