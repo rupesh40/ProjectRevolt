@@ -28,7 +28,7 @@ class App extends React.Component {
     <Route path="/loginG" exact component={GridLoginRegister}/>
     <Route path="/DashNavigationGrid" exact component={DashNavigationGrid}/>
     <Route path="/Temp" exact component={Temp}/>
-    <ProtectedRoute path="/DashNavigation"  component={DashNavigation}/>
+    <Route path="/DashNavigation"  component={DashNavigation}/>
     <Route path="/" exact component={Main}/>
     
     <Route path="/LogOut" exact component={Main}/>

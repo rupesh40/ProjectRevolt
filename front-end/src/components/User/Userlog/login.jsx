@@ -49,7 +49,7 @@ if (res){
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <form onSubmit={this.onSubmit}>
+        <form /* onSubmit={this.onSubmit}*/>
         <div className="header">User Login</div>
         <div className="content">
         
@@ -70,8 +70,8 @@ if (res){
           
        
         <div className="footer">
-          <button type="submit" onClick={this.change} className="btn1" >Login
-          {/* <Link to="/DashNavigation" style={{color:'white'}}> Login</Link> */}
+          <button type="submit" onClick={this.change} className="btn1" >
+          <Link to="/DashNavigation" style={{color:'white'}}> Login</Link> 
           </button>
          <br/><br/>
           <p >

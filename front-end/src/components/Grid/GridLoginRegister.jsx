@@ -2,7 +2,7 @@ import React from "react";
 import "../UI/App.scss";
 import "../UI/nav.css";
 import "../UI/style.scss";
-import { LoginGrid } from "./GridLog/loginGrid.jsx";
+import  LoginGrid  from "./GridLog/loginGrid.jsx";
 import { RegisterGrid } from "./GridLog/registerGrid.jsx";
 //import {BrowserRouter,Route} from 'react-router-dom'
 //import Navigation from "../Navigation.jsx";

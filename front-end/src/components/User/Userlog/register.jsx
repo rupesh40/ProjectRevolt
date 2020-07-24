@@ -25,12 +25,12 @@ onSubmit= async e =>{
       const Data={
         firstName:this.state.firstName,
         lastName:this.state.lastName,
-        password:this.state.password*1,
+        password:this.state.password,
         email:this.state.email,
 
         phoneNumber:this.state.phoneNumber*1
       }
-      console.log(this.state.password,this.state.confirmPassword)
+
       
       register(Data)
 
@@ -69,7 +69,7 @@ onSubmit= async e =>{
         </div>
         <div className="form-group">
         <label htmlFor="password">confirm Password</label>
-        <input type="text"  placeholder="confirm password" value={this.state.conformPassword} onChange={e=>{this.setState({conformPassword:e.target.value})}} />
+        <input type="text"  placeholder="confirm password" value={this.state.conformPassword} onChange={e=>{this.setState({confirmPassword:e.target.value})}} />
       </div>
             
           </div>

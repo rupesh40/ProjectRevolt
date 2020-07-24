@@ -6,7 +6,7 @@ const login = async (data) =>{
         const {email,password} = data
 const res = await axios({
     method:"POST",
-    url:"http://localhost:4000/api/users/login",
+    url:"http://localhost:4000/api/gridOwner/login",
     data:{
         email,
         password
@@ -23,10 +23,11 @@ return res
 
 export const register = async (data) =>{
     try{
+        console.log("in register")
         const {firstName,lastName,email,phoneNumber,password} = data
 const res = await axios({
     method:"POST",
-    url:"http://localhost:4000/api/users/signup",
+    url:"http://localhost:4000/api/gridOwner/signup",
     data:{
         firstName,
         lastName,

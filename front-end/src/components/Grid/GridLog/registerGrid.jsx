@@ -3,10 +3,37 @@ import loginImg from "../../UI/log.png";
 import moduleName from '../../UI/Home.css'
 import {Link} from 'react-router-dom';
 //import "../Styling/style.scss";
-//import "../Styling/App.scss";
+//import "../Styling/App.scss";\
+import {register} from "../../services/gridOwner" 
 export class RegisterGrid extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state={
+      firstName: "",
+      lastName: "",
+      password :"",
+      confirmPassword:"",
+      phoneNumber:"",
+      email:""
+  }
+  }
+   onSubmit= async e =>{
+    e.preventDefault()
+    
+
+    
+    const Data={
+      firstName:this.state.firstName,
+      lastName:this.state.lastName,
+      password:this.state.password,
+      email:this.state.email,
+
+      phoneNumber:this.state.phoneNumber*1
+    }
+    
+    register(Data)
+
   }
 
   render() {
@@ -18,39 +45,42 @@ export class RegisterGrid extends React.Component {
           <div className="image">
             <img src={loginImg}/>
           </div>
+          <form onSubmit={this.onSubmit}>
           <div className="form">
             <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" className="form-control form-control-sm validate" />
+            <label htmlFor="username">FirstName</label>
+              <input type="text"  placeholder="firstName" value={this.state.firstName} onChange={e=>{this.setState({firstName:e.target.value})}} />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" className="form-control form-control-sm validate"  />
+            <label htmlFor="username">Lastname</label>
+              <input type="text"  placeholder="Lastname" value={this.state.lastName} onChange={e=>{this.setState({lastName:e.target.value})}} />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
+            <label htmlFor="email">Email</label>
+              <input type="text" value={this.state.email} placeholder="email" onChange={e=>{this.setState({email:e.target.value})}} />
             </div>
             <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
+            <label >phoneNumber</label>
+              <input type="text"  placeholder="PhoneNumber" value={this.state.phoneNumber} onChange={e=>{this.setState({phoneNumber:e.target.value})}} />
           </div>
           <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
+          <input type="text"  placeholder="password" value={this.state.password} onChange={e=>{this.setState({password:e.target.value})}} />
         </div>
         <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input type="text" name="password" placeholder="password" className="form-control form-control-sm validate" />
+        <label htmlFor="password">confirm Password</label>
+        <input type="text"  placeholder="confirm password" value={this.state.conformPassword} onChange={e=>{this.setState({confirmPassword:e.target.value})}} />
       </div>
             
           </div>
+          
         
         <div className="footer">
-          <button type="button" className="btn1">
-          <Link to="/Temp" style={{color:'white'}}>Add Station</Link>
+          <button type="submit" className="btn1">
+            Register
           </button>
         </div>
+        </form>
         </div>
       </div>
     );

@@ -32,7 +32,7 @@ const gridStationSchema = new Schema(
       enum:["open","closed"],
       default:"open"
     },
-    WorkingTimes:{
+    WorkingTime:{
       type:String
     },
     totalCapacity:{

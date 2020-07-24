@@ -8,6 +8,7 @@ import PlanTrip from "./PlanTrip.jsx";
 import AddStation from "./AddStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 //import MapContainer from './MapContainer.jsx'
+import auth from "../../services/auth"
 export class DashNavigationGrid extends Component {
   state = {
     Page: false,
@@ -106,7 +107,7 @@ export class DashNavigationGrid extends Component {
           >
             Vehicle
           </button>
-          <Link  to="/LogOut"><button 
+          <Link  to="/LogOut"><button onClick={auth.logout()}
           class="  btn btn-sm align-end m-2 "
           id="LogOut"
         >Log Out</button></Link>
