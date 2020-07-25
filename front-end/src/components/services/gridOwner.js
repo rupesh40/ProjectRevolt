@@ -1,4 +1,6 @@
 import axios from "axios";
+import Cookie from "js-cookie"
+
 
 
 const login = async (data) =>{
@@ -13,6 +15,9 @@ const res = await axios({
     }
 
 })
+Cookie.set('jwt', res.data.token, { expires: 365 });
+Cookie.set('user', res.data, { expires: 365 })
+
 return res
     }
     catch(err){
@@ -23,7 +28,7 @@ return res
 
 export const register = async (data) =>{
     try{
-        console.log("in register")
+        
         const {firstName,lastName,email,phoneNumber,password} = data
 const res = await axios({
     method:"POST",

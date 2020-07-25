@@ -1,11 +1,9 @@
 import axios from "axios";
-// import Geocode from "react-geocode";
+import Cookie from "js-cookie"
 
-// Geocode.setApiKey("AIzaSyDTzcXNxs3iT1zZUBHtRWdY8ISgSHz09EI");
-// Geocode.setLanguage("en");
 //GET https://us1.locationiq.com/v1/search.php?key=YOUR_PRIVATE_TOKEN&q=SEARCH_STRING&format=json
 const token = "pk.51fdf5cc6e76763843ff2fdf75f22330"
-const address = "NH161A Waghala Nanded-Waghala Nanded Maharashtra 431600 India "
+//const address = "NH161A Waghala Nanded-Waghala Nanded Maharashtra 431600 India "
 // //address": {
 //     "road": "NH161A",
 //     "suburb": "Waghala",
@@ -26,13 +24,15 @@ export const register= async (data) =>{
             workingTime,
             stationAddress,
             stationNumber,
-            noOfChargingPoint} = data
+            noOfChargingPoint,
+        phoneNumber} = data
 const res = await axios({
     method:"POST",
-    url:"http://localhost:4000/api/gridStation/signup",
+    url:"http://localhost:4000/api/gridStation/",
     data:{
         Name,
         email,
+        phoneNumber,
         workingTime,
         stationAddress,
         stationNumber,
@@ -40,28 +40,29 @@ const res = await axios({
     }
 
 })
-console.log(res)
-return res
+ 
+console.log(res.data.data._id)
+const Data = JSON.parse(Cookie.get("user"))
+if (res){
+   var update = await axios({
+         method:"PATCH",
+         url:`http://localhost:4000/api/gridOwner/update-user/${Data.data.user._id}`,
+         data:{
+             ownedGridStations:res.data.data._id
+         }
+     })
+     console.log(update)
+ }
+
     }
     catch(err){
-        console.log(err.response.data);
+        console.log(err);
 
     }
 }
 
-// export const geo = ()=>{
-//     Geocode.fromAddress("Eiffel Tower").then(
-//     response => {
-//       const { lat, lng } = response.results[0].geometry.location;
-//       console.log(lat, lng);
-//     },
-//     error => {
-//       console.error(error);
-//     }
-//   )
-// }
 
-export const geom = async()=>{
+export const geom = async(address)=>{
     var settings = {
     "async": true,
     "crossDomain": true,
@@ -72,5 +73,20 @@ export const geom = async()=>{
     method:"GET",
     url:`https://us1.locationiq.com/v1/search.php?key=${token}&q=${address}&format=json`
   })
-  console.log(res)
+  const latitude = res.data[0].lat
+  const longitude = res.data[0].lon
+
+  return {latitude,longitude}
 }
+/*boundingbox: (4) ["19.009335", "19.329335", "77.151013", "77.471013"]
+class: "place"
+display_name: "Nanded-Waghala, Nanded, Maharashtra, 431600, India"
+icon: "https://locationiq.org/static/images/mapicons/poi_place_city.p.20.png"
+importance: 0.85753452139903
+lat: "19.169335"
+licence: "https://locationiq.com/attribution"
+lon: "77.311013"
+osm_id: "1185686412"
+osm_type: "node"
+place_id: "13055573"
+type: "city"*/

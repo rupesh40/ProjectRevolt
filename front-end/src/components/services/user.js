@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookie from "js-cookie"
 
 
 const login = async (data) =>{
@@ -13,10 +14,12 @@ const res = await axios({
     }
 
 })
+Cookie.set('jwt', res.data.token, { expires: 365 });
+Cookie.set('user', res.data, { expires: 365 })
 return res
     }
     catch(err){
-        console.log(err.response.data);
+        console.log(err);
 
     }
 }

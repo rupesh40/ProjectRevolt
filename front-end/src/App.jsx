@@ -9,6 +9,7 @@ import DashNavigation from './components/User/Home/DashNavigation.jsx'
 import DashNavigationGrid from './components/Grid/HomeGrid/DashNavigationGrid.jsx'
 import Temp from './components/Grid/GridLog/Temp.jsx'
 import ProtectedRoute from "./protectedRoutes.js"
+
 class App extends React.Component {
   state={
     called:false

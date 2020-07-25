@@ -8,6 +8,7 @@ import PlanTrip from "./PlanTrip.jsx";
 import AddNewStation from "./AddNewStation.jsx";
 import Vehicle from "./Vehicle.jsx";
 //import MapContainer from './MapContainer.jsx'
+import Cookie from "js-cookie"
 export class DashNavigationGrid extends Component {
   state = {
     Page: false,
@@ -28,6 +29,10 @@ export class DashNavigationGrid extends Component {
   handleModalShowHideV = () => {
     this.setState({ showHideV: !this.state.showHideV });
   };
+  log=()=>{
+    Cookie.remove("jwt");
+    Cookie.remove("user")
+  }
   render() {
     const { showHide, showHide1, showHideV } = this.state;
     return (
@@ -106,7 +111,7 @@ export class DashNavigationGrid extends Component {
           >
             Vehicle
           </button>
-          <Link  to="/LogOut"><button 
+          <Link  to="/LogOut"><button onClick={this.log}
           class="  btn btn-sm align-end m-2 "
           id="LogOut"
         >Log Out</button></Link>

@@ -36,11 +36,9 @@ password:this.state.password
 
 let res =  await login(data) 
 if (res){
-  console.log(res)
   auth.login()
   this.props.history.push("/DashNavigationGrid")
   
-
 }
 
 

@@ -26,7 +26,7 @@ const gridStationSchema = new Schema(
       index: true,
       unique: true,
     },
-    phoneNumber: Number,
+    phoneNumber: requiredNumber,
     isOpen:{
       type:String,
       enum:["open","closed"],
@@ -58,6 +58,9 @@ const gridStationSchema = new Schema(
     noOfChargingPoint: {
       type:Number
     },
+    owner:{
+      type:mongoose.Schema.ObjectId
+    }
   },
   {
     timestamps: true,

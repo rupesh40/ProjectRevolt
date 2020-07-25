@@ -35,19 +35,23 @@ export default class AddStation extends React.Component {
     })
     console.log(this.state.currentItem.text)
   }
-  onSubmit = () =>{
-    geom()
+   onSubmit = async() =>{
+    const addCoordinates = await geom(this.state.address)
+    console.log(addCoordinates)
+    
     const data = {
       Name:this.state.name,
       email:this.state.email,
       phoneNumber:this.state.phoneNumber,
       workingTime:this.state.workTime,
-      stationAddress:this.address,
+      stationAddress:addCoordinates,
       stationNumber:this.state.stationNo,
       NoOfChargingPoint:this.state.noOfPoint
     }
-  console.log(data)
+    console.log(data)
+   register(data)
   }
+
   render() {
     return (
       <div>
