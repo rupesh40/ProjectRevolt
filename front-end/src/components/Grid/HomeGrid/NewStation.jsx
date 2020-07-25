@@ -187,7 +187,7 @@ export default class AddStation extends React.Component {
         <AddNewStation handleInput={this.handleInput} 
        text={this.state.currentItem.text} items={this.state.items} />
         {/*<ListItems handleInput={this.handleInput}*/ }
-       text={this.state.currentItem.text} items={this.state.items} />
+       text={this.state.currentItem.text} items={this.state.items} 
      
         </div>
     );

@@ -4,7 +4,7 @@ import { Map, TileLayer } from 'react-leaflet';
 import './MapCss.css';
 import data from './data.json';
 import Markers from './VenueMarkers';
-//import Search from './Search.jsx'
+//import MoreInfo from './MoreInfo.jsx'
 import ReactLeafletSearch from "react-leaflet-search";
 class Map1 extends Component {
   constructor(props) {
@@ -36,7 +36,9 @@ class Map1 extends Component {
     closeResultsOnClick={true}
    providerOptions={{searchBounds: []}} 
     customProvider={undefined | {search: (searchString)=> {}}}  className="custom-style"/>
-       <Markers venues={data.venues}/>
+       
+    
+    <Markers venues={data.venues}/>
       </Map>
       
     );
