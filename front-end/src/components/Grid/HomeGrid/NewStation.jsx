@@ -1,74 +1,20 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import "./Styling/PlanTrip.css";
-import uuid from "uuid";
+
 import ListItems from './ListItems.jsx'
 import loginImg from "../../UI/download.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import AddNewStation from './AddNewStation.jsx'
-export default class AddStation extends React.Component {
-  constructor(props) {
-    super(props)
-
-   this.input=React.createRef()
-   this.state={
-       list:['a','b'],    
-      }     
-}
+export default class NewStation extends React.Component {
+  
  
   handleModalShowHide() {
     this.props.handleModalShowHide1();
   }
-  addTask=()=>{
-    console.log(this.state.list)
-    const Items={
-            id:uuid.v4(),
-            value:'abc',
-            Date: new Date().toUTCString()
-        };
-    
-        if(localStorage.getItem('list')==null){
-            const list=[]
-            list.push(Items);
-            localStorage.setItem("list",JSON.stringify(list))
-        }
-        else{
-            const list=JSON.parse(localStorage.getItem('list'))
-            list.push(Items)
-            localStorage.setItem("list",JSON.stringify(list))
-        }
-        this.setState({
-            list:JSON.parse(localStorage.getItem('list'))
-        });
-    }
-    
-componentDidMount() {
-  const list = window.localStorage.getItem('list');
-  const parsedList = JSON.parse(list);
-  if(list == null){
-      return false
-  }
-  else{
-      this.setState({
-          list: parsedList,
-      })
-      console.log(this.state.list);
-  }
-}
-
-deleteItem=(event)=> {
-    
-  let index = event.target.getAttribute('data-key')
-  let listValue=JSON.parse(localStorage.getItem('list'));
-  listValue.splice(index,1)
-  this.setState({list:listValue});
-  localStorage.setItem('list',JSON.stringify(listValue))
-}
-
     
  render() {
-   const {list}=this.state
+  const { val, handleChange } = this.props
     return (
       <div>
         <Modal
@@ -105,6 +51,8 @@ deleteItem=(event)=> {
               name="username"
               placeholder="Station Name"
               className="form-control form-control-sm validate"
+              onChange={handleChange('name')}
+              defaultValue={val.name}
             />
           </div>
           <div className="form-group">
@@ -180,14 +128,13 @@ deleteItem=(event)=> {
 
             <Button
               variant="primary"
-              onClick={this.addTask}
+              onClick={() => this.handleModalShowHide()}
             >
               Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
-        <AddNewStation addTask={this.addTask} list={this.state.list}
-         input={this.input} index={this.props.index} deleteItem={this.deleteItem}/>
+        
         </div>
     );
   }

@@ -5,17 +5,20 @@ import "./Styling/PlanTrip.css";
 import ListItems from "./ListItems.jsx";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import AddStation from "./NewStation.jsx";
-import PropTypes from 'prop-types';
+import NewStation from "./NewStation.jsx";
+
 export default class AddNewStation extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       showHide1: false,
-      list:['a','b']
+      name:''
     };
   }
+  handleChange = input => e => {
+    this.setState({ [input]: e.target.value });
+  };
 
   handleModalShowHide() {
     this.props.handleModalShowHide1();
@@ -26,7 +29,8 @@ export default class AddNewStation extends React.Component {
 
   render() {
     const { showHide1 } = this.state;
-    const {list}=this.props
+    const {name}=this.state
+    const val={name}
     return (
       <div>
         <Modal
@@ -53,17 +57,10 @@ export default class AddNewStation extends React.Component {
             </Button>
           </Modal.Title>
           <Modal.Body>
-          <input type="text" placeholder="AddTask..." ref={this.props.input}/>
-          <button onClick={this.props.addTask} className="button" >Add</button>
-              <ol>
-                  {
-                      this.state.list.map((item,index)=>
-                      {
-                          return(<li key={item.id}> {item.value}
-                          <button className="button" type="button" value="delete" data-key={index} onClick={this.props.deleteItem}>Delete</button></li>)
-                      })
-                  } 
-              </ol>
+
+          {name && <a name="btn" id="#" class="btn btn-primary" href="#" role="button"> {name}</a>} 
+          
+  
           </Modal.Body>
 
           <Modal.Footer>
@@ -84,12 +81,14 @@ export default class AddNewStation extends React.Component {
         </Modal>
         <div id="Page">
           {showHide1 && (
-            <AddStation
+            <NewStation
               showHide1={showHide1}
               handleModalShowHide1={this.handleModalShowHide1}
+              val={val} handleChange={this.handleChange}
             />
           )}
         </div>
+      
       </div>
     );
   }
