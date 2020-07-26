@@ -1,3 +1,6 @@
+
+
+
 {
     "venues" : [
         {
@@ -79,6 +82,56 @@
                 52.512187,
                 13.425563
             ]
-        }
+        },
+        {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Coulomb Technologies",
+            "geometry": [19.207347, 77.346749]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "ABB",
+            "geometry": [19.281145, 76.758686]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Shell",
+            "geometry": [19.852646, 75.314812]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Webasto",
+            "geometry": [20.263538, 74.433413]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Siemens",
+            "geometry": [19.097008, 74.716922]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "EVgo",
+            "geometry": [19.067921, 73.019879]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Blink",
+            "geometry": [17.411644, 78.324265]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Schneider Electric",
+            "geometry": [17.532158, 78.25766]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Renault",
+            "geometry": [18.500221, 73.932882]
+          },
+          {
+            "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
+            "name": "Eaton",
+            "geometry": [18.770306, 73.408457]
+          }
     ]
 }

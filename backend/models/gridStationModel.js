@@ -58,6 +58,9 @@ const gridStationSchema = new Schema(
     noOfChargingPoint: {
       type:Number
     },
+    chargingTypes:[{
+type:Object
+    }],
     owner:{
       type:mongoose.Schema.ObjectId
     }

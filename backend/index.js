@@ -36,7 +36,12 @@ app.use(mongoSanitize()); //data sanitization against NoSQL querry injection
 
 app.use(XSS()); // data sanitization against XSS
 
-const DB = process.env.DATABASE;
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',process.env.DATABASE_PASSWORD
+);
+
+
+
 
 mongoose
   .connect(DB, { useNewUrlParser: "True", useUnifiedTopology: "True",useCreateIndex: true })
