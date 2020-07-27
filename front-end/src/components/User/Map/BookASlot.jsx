@@ -59,16 +59,26 @@ export default class BookASlot extends React.Component {
                 className="form-control form-control-sm validate"
               />
             </div>
-
+            <span style={{ color: "Blue", fontSize: "20px" }}>Charger type:</span><br/>
             {this.props.chargingTypes.map((item, i) => {
               return (
-                <div key={i} style={{fontSize:'20px'}}>
-                  <input type="checkbox" class="custom-control-input" />
-                  
-                    {item.name}
-                  
-                </div>
-              );
+                <div
+                
+                class="custom-control custom-checkbox"
+                key={i}
+                >
+                <input
+                      key={i}             
+                  type="checkbox"
+                  class="custom-control-input"
+                  id={i}
+                />
+                <label style={{ fontSize: "15px",color:'black' }} class="custom-control-label" for={i}>
+                  {item.name}
+                </label>
+              </div>
+            
+                );
             })}
           </Modal.Body>
 
