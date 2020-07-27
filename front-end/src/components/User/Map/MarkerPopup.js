@@ -16,7 +16,6 @@ handleModalShowHide1 = () => {
 render() {
   const {showHide1}=this.state;
   const { name} = this.props.data;
-  console.log(name);
   return (
     <div>
       <Popup>
