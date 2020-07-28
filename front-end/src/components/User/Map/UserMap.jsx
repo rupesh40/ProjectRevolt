@@ -4,7 +4,7 @@ import { Map, TileLayer } from 'react-leaflet';
 import './MapCss.css';
 import data from './data.json';
 import Markers from './VenueMarkers';
-//import MoreInfo from './MoreInfo.jsx'
+import Routing from './Routing'
 import ReactLeafletSearch from "react-leaflet-search";
 class Map1 extends Component {
   constructor(props) {
@@ -12,15 +12,21 @@ class Map1 extends Component {
     this.state = {
       currentLocation: { lat: 19.138250, lng: 77.320953 },
       zoom: 12,
+      isMapInit: false
     }
   }
-
+  saveMap = map => {
+    this.map = map;
+    this.setState({
+      isMapInit: true
+    });
+  };
   render() {
     const { currentLocation, zoom } = this.state;
 
     return (
 
-      <Map style={{maxHeight:'100%',background:'cover',overflow:'scroll'}} center={currentLocation} zoom={zoom}>
+      <Map  ref={this.saveMap} center={currentLocation} zoom={zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -37,6 +43,7 @@ class Map1 extends Component {
    providerOptions={{searchBounds: []}} 
     customProvider={undefined | {search: (searchString)=> {}}}  className="custom-style"/>
        
+    {this.state.isMapInit && <Routing map={this.map} />}
     
     <Markers venues={data.venues}/>
       </Map>
