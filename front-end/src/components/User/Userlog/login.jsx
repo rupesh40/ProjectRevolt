@@ -60,9 +60,10 @@ login(data)
           
        
         <div className="footer">
-          <button type="button" onClick={this.change} className="btn1" >
-          <Link to="/DashNavigation" style={{color:'white'}}> Login</Link>
-          </button>
+         
+          <Link to="/DashNavigation" style={{color:'white'}}>
+           <button type="button" onClick={this.change} className="btn1" > Login</button></Link>
+          
          <br/><br/>
           <p >
                     Forgot <a href="#">password?</a>
