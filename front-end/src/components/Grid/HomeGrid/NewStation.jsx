@@ -1,8 +1,6 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import "./Styling/PlanTrip.css";
-
-import ListItems from './ListItems.jsx'
 import loginImg from "../../UI/download.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";

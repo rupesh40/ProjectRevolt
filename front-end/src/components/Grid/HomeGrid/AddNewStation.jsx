@@ -1,8 +1,5 @@
 import React from "react";
-//import { Link } from "react-router-dom";
-import uuid from "uuid";
-import "./Styling/PlanTrip.css";
-import ListItems from "./ListItems.jsx";
+import "./Styling/PlanTrip.css"
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import NewStation from "./NewStation.jsx";

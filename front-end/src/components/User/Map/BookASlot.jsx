@@ -22,6 +22,7 @@ export default class BookASlot extends React.Component {
             fontSize: "20px",
             marginTop: "0px",
             maxWidth: "200%",
+            backdropFilter:"blur(2px)"
           }}
           show={this.props.BookASlotShowHide}
           className="bg-transparent  d-inline-block "
@@ -41,7 +42,7 @@ export default class BookASlot extends React.Component {
               <input
                 type="text"
                 name="password"
-                placeholder="Station Number"
+                placeholder="Starting Time"
                 className="form-control form-control-sm validate"
               />
             </div>
@@ -55,7 +56,7 @@ export default class BookASlot extends React.Component {
               <input
                 type="text"
                 name="password"
-                placeholder="Station Number"
+                placeholder="Ending Time"
                 className="form-control form-control-sm validate"
               />
             </div>
@@ -80,22 +81,17 @@ export default class BookASlot extends React.Component {
             
                 );
             })}
+            
           </Modal.Body>
 
           <Modal.Footer>
             <Button
-              variant="secondary"
+              variant="warning"
               onClick={() => this.handleModalShowHide()}
             >
-              Close
+              Book Now
             </Button>
 
-            <Button
-              variant="primary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Save Changes
-            </Button>
           </Modal.Footer>
         </Modal>
       </div>

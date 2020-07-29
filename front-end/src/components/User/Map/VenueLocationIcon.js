@@ -1,8 +1,8 @@
 import L from 'leaflet';
 
 export const VenueLocationIcon = L.icon({
-  iconUrl: require('./venue_location_icon.svg'),
-  iconRetinaUrl: require('./venue_location_icon.svg'),
+  iconUrl: require('./icons8-marker-storm-48.png'),
+  iconRetinaUrl: require('./icons8-marker-storm-48.png'),
   iconAnchor: null,
   shadowUrl: null,
   shadowSize: null,
