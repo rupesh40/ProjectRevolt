@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 //import "../Styling/App.scss";\
 import {register} from "../../services/gridOwner" 
 export class RegisterGrid extends React.Component {
+  userData;
   constructor(props) {
     super(props);
 
@@ -18,6 +19,36 @@ export class RegisterGrid extends React.Component {
       email:""
   }
   }
+  changeFirstName = e =>{
+    this.setState({firstName:e.target.value})
+  }
+  componentDidMount() {
+    this.userData = JSON.parse(localStorage.getItem('user1'));
+  
+    if (localStorage.getItem('user1')) {
+        this.setState({
+            firstName: this.userData.firstName,
+            lastName: this.userData.lastName,
+            phoneNumber : this.userData.phoneNumber,
+            email: this.userData.email,
+        })
+    } else {
+        this.setState({
+            
+            email: '',
+            firstName:'',
+            lastName:'',
+            phoneNumber:''
+        })
+    }
+  }
+  
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('user1', JSON.stringify(nextState));
+  }
+  
+  
+
    onSubmit= async e =>{
     e.preventDefault()
     
@@ -45,11 +76,11 @@ export class RegisterGrid extends React.Component {
           <div className="image">
             <img src={loginImg}/>
           </div>
-          <form onSubmit={this.onSubmit}>
+          <form /*onSubmit={this.onSubmit}*/>
           <div className="form">
             <div className="form-group">
             <label htmlFor="username">FirstName</label>
-              <input type="text"  placeholder="firstName" value={this.state.firstName} onChange={e=>{this.setState({firstName:e.target.value})}} />
+              <input type="text"  placeholder="firstName" value={this.state.firstName} onChange={this.changeFirstName} />
             </div>
             <div className="form-group">
             <label htmlFor="username">Lastname</label>

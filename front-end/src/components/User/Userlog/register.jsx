@@ -5,6 +5,7 @@ import moduleName from '../../UI/Home.css'
 //import "../Styling/App.scss";
 import {register} from "../../services/user" 
 export class Register extends React.Component {
+  userData;
   constructor(props) {
     super(props);
 
@@ -17,6 +18,32 @@ export class Register extends React.Component {
       email:""
   }
 }
+componentDidMount() {
+  this.userData = JSON.parse(localStorage.getItem('user2'));
+
+  if (localStorage.getItem('user2')) {
+      this.setState({
+          firstName: this.userData.firstName,
+          lastName: this.userData.lastName,
+          phoneNumber : this.userData.phoneNumber,
+          email: this.userData.email,
+      })
+  } else {
+      this.setState({
+          
+          email: '',
+          firstName:'',
+          lastName:'',
+          phoneNumber:''
+      })
+  }
+}
+
+componentWillUpdate(nextProps, nextState) {
+  localStorage.setItem('user2', JSON.stringify(nextState));
+}
+
+
 onSubmit= async e =>{
       e.preventDefault()
       

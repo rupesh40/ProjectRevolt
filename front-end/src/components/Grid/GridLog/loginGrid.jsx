@@ -8,6 +8,7 @@ import login from "../../services/gridOwner"
 import auth from "../../services/auth"
 
  class LoginGrid extends React.Component {
+  userData;
   constructor(props) {
     super(props);
     
@@ -26,6 +27,28 @@ changeEmail = e =>{
 changePassword=e=>{
   this.setState({password:e.target.value})
 }
+componentDidMount() {
+  this.userData = JSON.parse(localStorage.getItem('user'));
+
+  if (localStorage.getItem('user')) {
+      this.setState({
+          email: this.userData.email,
+      
+      })
+  } else {
+      this.setState({
+          
+          email: '',
+    
+      })
+  }
+}
+
+componentWillUpdate(nextProps, nextState) {
+  localStorage.setItem('user', JSON.stringify(nextState));
+}
+
+
 onSubmit=async e=>{
   e.preventDefault()
 const data={
@@ -65,9 +88,9 @@ if (res){
           </div>
        
         <div className="footer">
-          <button type="submit" onClick={this.change} className="btn1" >
-          <Link to="/DashNavigationGrid" style={{color:'white'}}> Login</Link>
-          </button>
+         
+          <Link to="/DashNavigationGrid" style={{color:'white'}}> <button type="submit" onClick={this.change} className="btn1" > Login
+          </button></Link>
           <br/><br/>
           <p >
                     Forgot <a href="#">password?</a>

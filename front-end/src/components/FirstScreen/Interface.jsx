@@ -26,8 +26,8 @@ function Interface(props) {
         <Modal.Body>
     
             <h2 className="Interface" >Welcome to <span className="name">revolt</span></h2>
-            <button className="button"><Link to="/loginU" style={{color:'white'}} >Login as User</Link></button>
-            <button className="button "><Link to="/loginG" style={{color:'white'}} >Login as Grid owner</Link></button>
+            <Link to="/loginU" style={{color:'white'}} ><button className="button">Login as User</button></Link>
+            <Link to="/loginG" style={{color:'white'}} ><button className="button ">Login as Grid owner</button></Link>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={props.onHide}>Close</Button>
