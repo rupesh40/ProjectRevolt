@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 
 const slotBookingSchema= new Schema({
-    startTime:timestamps,
-    endTime:timestamps,
+    startTime:{type:String},
+    endTime:{type:String},
     typeOfcharger:String,
     status:Boolean,
     User:[
@@ -20,6 +20,7 @@ const slotBookingSchema= new Schema({
         }
     ]
 
+date :{type:Date}
 },{
     timestamps:true
 })
