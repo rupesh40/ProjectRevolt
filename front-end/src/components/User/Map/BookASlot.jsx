@@ -3,20 +3,33 @@ import React from "react";
 //import "./Styling/PlanTrip.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class BookASlot extends React.Component {
+  state = {
+    startDate: new Date()
+  };
+  
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
+  };
+ 
   handleModalShowHide() {
     this.props.handleModalShowHideBook();
   }
 
   render() {
     return (
-      <div>
+      <div style={{Color:'black'}}>
         <Modal
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           left-top
           style={{
+            
             overflow: "auto",
             maxHeight: "100%",
             fontSize: "20px",
@@ -32,6 +45,21 @@ export default class BookASlot extends React.Component {
           </Modal.Header>
 
           <Modal.Body>
+          <div>
+          <label
+          htmlFor="password"
+          style={{ color: "Blue", fontSize: "20px" }}
+        >
+          Enter Date:
+        </label>
+         <br/>
+          <DatePicker
+          className='New'
+          style={{Color:'black'}}
+          selected={this.state.startDate}
+          onChange={this.handleChange}
+        />
+        </div>
             <div className="form-group">
               <label
                 htmlFor="password"

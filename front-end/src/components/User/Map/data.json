@@ -10,7 +10,7 @@
         "stationAddress": { "latitude": 18.52043, "longitude": 73.856743 },
         "stationNumber": 8451,
         "NoOfChargingPoint": 5,
-        "chargingTypes": [{ "Type 2 AC": 2 }, { "CSS": 2 }, { "Type 1 AC": 1 }],
+        "chargingTypes": [{ "name":"Type 2 AC","number": 2 }, {"name": "CSS","number": 2 }, { "name":"Type 1 AC","number": 1 }],
         "owner": "5f1dc1d8d9d2d625882566b2"
       },
       "name": "Pune Vehicals",
@@ -26,7 +26,7 @@
         "stationAddress": { "latitude": 28.70406, "longitude": 77.102493 },
         "stationNumber": 746,
         "NoOfChargingPoint": 4,
-        "chargingTypes": [{ "Type 2 AC": 2 }, { "Type 1 AC": 2 }],
+        "chargingTypes": [{ "name":"Type 2 AC","number": 2 }, { "name":"Type 1 AC","number": 2 }],
         "owner": "5f1dc1d8d9d2d625882566b2"
       },
       "name": "Delhi EV",

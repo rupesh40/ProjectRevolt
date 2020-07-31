@@ -168,7 +168,7 @@ img::-moz-selection {
 }
 header.masthead {
   text-align: center;
-  color: #fff;
+  color:grey;
   background-color: rgba(236, 217, 45, 0.774);
   background-repeat: no-repeat;
   background-attachment: scroll;

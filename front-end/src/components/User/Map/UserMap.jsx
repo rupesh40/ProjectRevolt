@@ -11,7 +11,7 @@ class Map1 extends Component {
     super(props);
     this.state = {
       currentLocation: { lat: 19.138250, lng: 77.320953 },
-      zoom: 12,
+      zoom: 13,
       isMapInit: false
     }
   }
