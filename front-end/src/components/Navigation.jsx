@@ -18,23 +18,23 @@ return(
       <div className="collapse navbar-collapse" id="navbarResponsive">
         <ul className="navbar-nav text-uppercase ml-auto">
           <li className="nav-item">
-          <a href="#MainPage" style={{color:'white'}} className="nav-link js-scroll-trigger">Home</a> 
+          <a href="#MainPage"  className="nav-link js-scroll-trigger">Home</a> 
 
           </li>
           <li className="nav-item">
-          <a href="#ContactUs" style={{color:'white'}} className="nav-link js-scroll-trigger">Contact</a>
+          <a href="#ContactUs"  className="nav-link js-scroll-trigger">Contact</a>
           </li>
           <li className="nav-item">
-          <a href="#About" style={{color:'white'}} className="nav-link js-scroll-trigger">About</a>
+          <a href="#About"  className="nav-link js-scroll-trigger">About</a>
           </li>
           <li className="nav-item">
-          <a href="#Portfolio" style={{color:'white'}} className="nav-link js-scroll-trigger">Networks</a>
+          <a href="#Portfolio"  className="nav-link js-scroll-trigger">Networks</a>
           </li>
           <li className="nav-item">
-          <a href="#Services" style={{color:'white'}}  className="nav-link js-scroll-trigger">Services</a>
+          <a href="#Services"   className="nav-link js-scroll-trigger">Services</a>
           </li>
           <li className="nav-item" >
-          <Button variant="primary mr-2"  onClick={() => setModalShow(true)}>
+          <Button variant="primary "  onClick={() => setModalShow(true)}>
           Login/Register
         </Button>
           </li>

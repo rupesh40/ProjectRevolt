@@ -23,7 +23,7 @@ export default class AddStation extends React.Component {
           style={{
             overflow: "auto",
             maxHeight: "100%",
-            fontSize: "12px",
+            fontSize: "30px",
             margin: "0px",
           }}
           show={this.props.showHide1}

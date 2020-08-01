@@ -2,6 +2,7 @@
   "venues": [
     {
       "description": {
+        "city":"Pune",
         "id": "5f1dd0a9d9d2d625882566c7",
         "Name": "Pune Vehicals",
         "email": "punevehicals@gmail.com",
@@ -18,6 +19,7 @@
     },
     {
       "description": {
+        "city":"Delhi",
         "id": "5f1dd206d9d2d625882566c8",
         "Name": "Delhi EV",
         "email": "Delhi_EV@gmail.com",
@@ -34,6 +36,7 @@
     },
     {
       "description":{
+        "city":"Nasik",
         "id":"5f1dd352d9d2d625882566ca",
         "Name": "Nasik EV",
         "email":"Nasik_EV@gmail.com",
@@ -50,6 +53,7 @@
     },
     {
       "description":{
+        "city":"Napur",
         "id":"5f1dd2ffd9d2d625882566c9",
         "Name": "Nagpur EV",
         "email":"Nagpur_EV@gmail.com",
@@ -146,6 +150,7 @@
     },
     {
       "description": {
+        
         "id":"5f1dd3f0d9d2d625882566d0",
         "Name": "Kater Blau EV",
         "email":"Kater_Blau@gmail.com",

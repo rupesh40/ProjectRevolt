@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 import login from "../../Backend/user"
 export  class Login extends React.Component {
+  userData;
   constructor(props) {
     super(props);
 
@@ -24,6 +25,30 @@ changeEmail = e =>{
 changePassword=e=>{
   this.setState({password:e.target.value})
 }
+
+//This is new ,for keeping previous data
+componentDidMount() {
+  this.userData = JSON.parse(localStorage.getItem('user'));
+
+  if (localStorage.getItem('user')) {
+      this.setState({
+          email: this.userData.email,
+          password: this.userData.password
+      })
+  } else {
+      this.setState({
+          
+          email: '',
+          password: ''
+      })
+  }
+}
+
+componentWillUpdate(nextProps, nextState) {
+  localStorage.setItem('user', JSON.stringify(nextState));
+}
+
+
 onSubmit=e=>{
   e.preventDefault()
 const data={
