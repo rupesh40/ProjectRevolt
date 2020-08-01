@@ -9,6 +9,7 @@ const middleWares = require("./middlewares"); // our custom middlewares
 const users = require("./api/users");
 const gridOwner = require("./api/gridOwner")
 const gridStationUse = require("./api/gridStationUse");
+const slotBooking = require("./api/slotBooking")
 const AppError = require("./utilities/appError");
 const globalErrorHandler = require("./utilities/errorController");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -58,7 +59,7 @@ mongoose.connection.on("connected", (err, res) => {
 app.use("/api/users", users);
 app.use("/api/gridOwner",gridOwner);
 app.use("/api/gridStation", gridStationUse);
-
+app.use("/api/slotBooking", slotBooking);
 app.all("*", (req, res, next) => {
   next(new AppError(`can't find ${req.originalUrl} on this server`));
 });

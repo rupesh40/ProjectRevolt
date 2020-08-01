@@ -1,26 +1,25 @@
-var mongoose = require("mongoose"),
-var Schema = mongoose.Schema;
+var mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 
 const slotBookingSchema= new Schema({
-    startTime:{type:String},
-    endTime:{type:String},
-    typeOfcharger:String,
-    status:Boolean,
-    User:[
+    startingTime:{type:String},
+    endingTime:{type:String},
+    chargerType:{type:String},
+    status:{type:Boolean},
+    User:
         {
             type:mongoose.Schema.ObjectId,
             ref:"User"
-        }
-    ],
-    Station:[
+        },
+    Station:
         {
             type:mongoose.Schema.ObjectId,
             ref:"gridStationModel"
         }
-    ]
+    ,
 
-date :{type:Date}
+date :{type:String}
 },{
     timestamps:true
 })

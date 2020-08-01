@@ -101,6 +101,7 @@ export default class MoreInfo extends React.Component {
               BookASlotShowHide={BookASlotShowHide}
               handleModalShowHideBook={this.handleModalShowHideBook}
               chargingTypes={this.props.description.chargingTypes}
+              stationId={this.props.description.id}
             />
           )}
         </div>

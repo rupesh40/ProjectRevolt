@@ -5,11 +5,31 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Cookie from "js-cookie"
+import {addToDb} from "../../services/slotBooking"
+
+
 
 export default class BookASlot extends React.Component {
   state = {
-    startDate: new Date()
+    startDate: new Date(),
+    date:"",
+    startingTime:"",
+    endingTime:"",
+    chargerType:""
+
   };
+  onSubmit = e =>{
+    e.preventEvent()
+     var data= {
+       date:this.state.date,
+       startingTime:this.state.startingTime,
+       endingTime:this.state.endingTime,
+       chargerType:this.state.chargerType,
+       stationId:this.props.stationId
+     }
+  addToDb(data)
+    }
   
   handleChange = date => {
     this.setState({
@@ -58,6 +78,7 @@ export default class BookASlot extends React.Component {
           style={{Color:'black'}}
           selected={this.state.startDate}
           onChange={this.handleChange}
+          
         />
         </div>
             <div className="form-group">
@@ -115,7 +136,7 @@ export default class BookASlot extends React.Component {
           <Modal.Footer>
             <Button
               variant="warning"
-              onClick={() => this.handleModalShowHide()}
+              onClick={() => {this.handleModalShowHide();}}
             >
               Book Now
             </Button>

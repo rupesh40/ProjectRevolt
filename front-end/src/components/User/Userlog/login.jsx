@@ -62,7 +62,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <form /* onSubmit={this.onSubmit}*/>
+        <form  /*onSubmit={this.onSubmit}*/>
           <div className="header">User Login</div>
           <div className="content">
             <div className="image">
@@ -95,10 +95,10 @@ class Login extends React.Component {
             </div>
 
             <div className="footer">
-              <Link to="/DashNavigation" style={{ color: "white" }}>
-                {" "}
+              *<Link to="/DashNavigation" style={{ color: "white" }}>
+                {" "} 
                 <button type="submit" onClick={this.change} className="btn1">
-                  Login{" "}
+                Login{" "}
                 </button>
               </Link>
               <br />
